@@ -30,7 +30,7 @@ class WelcomePage extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 const Text(
-                  "All your vacations destinations are here,\nenjoy your holiday",
+                  "Explore your vacations destinations are here,\nenjoy your holiday",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.black54,
