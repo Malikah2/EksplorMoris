@@ -21,7 +21,7 @@ class WelcomePage extends StatelessWidget {
                 ),
                 const SizedBox(height: 40),
                 Text(
-                  "View your journey \n only with us",
+                  "Start your journey \n only with us",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 26,
