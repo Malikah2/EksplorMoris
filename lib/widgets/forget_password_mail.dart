@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+
+import '../pages/otp_screen.dart';
 
 class ForgetPasswordMailScreen extends StatelessWidget {
   const ForgetPasswordMailScreen({Key? key}) : super(key: key);
@@ -22,7 +26,7 @@ class ForgetPasswordMailScreen extends StatelessWidget {
               ),
             ),
              // adding spacing between image and text
-            Text('Welcome Back!',
+            Text('Reset Via Email!',
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -30,7 +34,7 @@ class ForgetPasswordMailScreen extends StatelessWidget {
             ),
             SizedBox(height: 10),
             Text(
-              'Please log in to continue.',
+              'Enter email address to continue.',
               style: TextStyle(
                 fontSize: 16,
                 color: Colors.grey,
@@ -52,7 +56,9 @@ class ForgetPasswordMailScreen extends StatelessWidget {
                   const SizedBox(height: 20.0,),
                   SizedBox(width: 200,
                     child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.to(() => const OTPScreen());
+                        },
                         child: Text("Next")),
                   ),
                 ],

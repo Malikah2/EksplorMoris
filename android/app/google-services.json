@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "528499133764",
+    "project_id": "eksplormoris",
+    "storage_bucket": "eksplormoris.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:528499133764:android:88c0489b6c211fbb105b11",
+        "android_client_info": {
+          "package_name": "com.example.example"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "528499133764-fikf3tf4o2l97a1lhormhi7bhjsfqioe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdPPFZ82ZEcXLedfyp44o7ENMpwoabekw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "528499133764-fikf3tf4o2l97a1lhormhi7bhjsfqioe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
