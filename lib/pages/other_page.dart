@@ -26,7 +26,7 @@ class OtherPage extends StatelessWidget{
             crossAxisAlignment: CrossAxisAlignment.start,
             children:  [
               const Text("Good Morning"),
-              Text("Banon",
+              Text("Nauthoo",
                 style: Theme.of(context).textTheme.labelMedium,
               ),
             ],
