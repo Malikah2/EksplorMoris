@@ -3,6 +3,7 @@ import 'package:example/widgets/forget_password_mail.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'home_page.dart';
+import 'home_widget.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -191,7 +192,7 @@ class LoginScreen extends StatelessWidget {
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => HomePage(),
+                                builder: (context) => Home(),
                               ),
                             );
                           },

@@ -3,6 +3,8 @@ import 'package:example/widgets/nearby_places.dart';
 import 'package:example/widgets/recommended_places.dart';
 import 'package:example/widgets/tourist_places.dart';
 import 'package:ionicons/ionicons.dart';
+import 'home_widget.dart';
+import 'other_page.dart';
 
 import 'package:example/widgets/custom_icon_button.dart';
 import 'package:flutter/material.dart';
@@ -75,29 +77,6 @@ class HomePage extends StatelessWidget {
           const NearbyPlaces(),
         ],
       ),
-    bottomNavigationBar: BottomNavigationBar(
-      type: BottomNavigationBarType.fixed,
-      showSelectedLabels: false,
-      showUnselectedLabels: false,
-      items: const [
-      BottomNavigationBarItem(
-        icon: Icon(Ionicons.home_outline),
-        label: "Home"
-    ),
-      BottomNavigationBarItem(
-        icon: Icon(Ionicons.bookmark_outline),
-        label: "Bookmark",
-    ),
-      BottomNavigationBarItem(
-        icon: Icon(Ionicons.ticket_outline),
-        label: "Ticket",
-      ),
-      BottomNavigationBarItem(
-        icon: Icon(Ionicons.person_outline),
-        label: "Profile",
-      )
-      ],
-    ),
     );
   }
 }
