@@ -1,5 +1,8 @@
 import 'package:example/pages/login_screen.dart';
+import 'package:example/signup_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 import 'home_page.dart';
 
@@ -8,6 +11,8 @@ class SignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(SignUpController());
+    final _formKey = GlobalKey<FormState>();
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
@@ -27,12 +32,14 @@ class SignUpScreen extends StatelessWidget {
 
 
               Form(
+                key: _formKey,
                 child: Container(
                   padding: EdgeInsets.symmetric(vertical: 20.0 ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       TextFormField(
+                        controller: controller.username,
                         decoration: const InputDecoration(
                           prefixIcon: Icon(Icons.person_outline_outlined),
                           labelText: 'Username',
@@ -42,6 +49,7 @@ class SignUpScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 10),
                       TextFormField(
+                        controller: controller.email,
                         decoration: const InputDecoration(
                           prefixIcon: Icon(Icons.person_outline_outlined),
                           labelText: 'Email',
@@ -51,6 +59,7 @@ class SignUpScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 10),
                       TextFormField(
+                        controller: controller.password,
                         decoration: const InputDecoration(
                           prefixIcon: Icon(Icons.fingerprint),
                           labelText: 'Password',
@@ -68,12 +77,9 @@ class SignUpScreen extends StatelessWidget {
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: () {
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => HomePage(),
-                              ),
-                            );
+                           if (_formKey.currentState!.validate()){
+                             SignUpController.instance.registerUser(controller.email.text.trim(), controller.password.text.trim());
+                           }
                           },
 
                           child: Text('SignUp'),

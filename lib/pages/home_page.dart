@@ -1,3 +1,4 @@
+import 'package:example/repository/authentication_repository/authentication_repository.dart';
 import 'package:example/widgets/location_card.dart';
 import 'package:example/widgets/nearby_places.dart';
 import 'package:example/widgets/recommended_places.dart';
@@ -29,15 +30,17 @@ class HomePage extends StatelessWidget {
         ),
           ],
         ),
-    actions: const [
+    actions:  [
        CustomIconButton(
         icon: Icon(Ionicons.search_outline),
         ),
      Padding(
        padding: EdgeInsets.only(left: 8.0, right: 12),
-       child: CustomIconButton(
-        icon: Icon(Ionicons.notifications_outline),
-        ),
+       child: IconButton(onPressed: () {
+         AuthenticationRepository.instance.logout();
+          }, icon:  Icon(Ionicons.arrow_back_circle_outline),
+
+       ),
        ),
     ],
       ),
