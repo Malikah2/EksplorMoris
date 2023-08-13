@@ -44,34 +44,39 @@ class NearbyPlaces extends StatelessWidget {
                           fit: BoxFit.cover,
                         ),
                       ),
-                      const SizedBox(width: 10),
+                      const SizedBox(width: 10,),
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                             Text(
-                              nearbyPlaces[index].name,
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                              ),
+                            const Spacer(),
+                             Padding(
+                               padding: const EdgeInsets.only(bottom: 1),
+                               child: Center(
+                                 child: Text(
+                                  nearbyPlaces[index].name,
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                             ),
-                            Text(nearbyPlaces[index].description),
-                            const SizedBox(height: 10),
+                               ),
+                             ),
+
                             // DISTANCE WIDGET
-                            const Distance(),
+                            //const Distance(),
                             const Spacer(),
                             Row(
                               children: [
                                 Icon(
                                   Icons.star,
                                   color: Colors.yellow.shade700,
-                                  size: 14,
+                                  size: 19,
                                 ),
                                 const Text(
                                   "4.5",
                                   style: TextStyle(
-                                    fontSize: 12,
+                                    fontSize: 20,
                                   ),
                                 ),
                                 const Spacer(),
@@ -79,17 +84,11 @@ class NearbyPlaces extends StatelessWidget {
                                   text: TextSpan(
                                       style: TextStyle(
                                         fontSize: 20,
-                                        color: Theme.of(context).primaryColor,
+                                        color: Colors.black54,
                                       ),
-                                      text: "\$22",
-                                      children: const [
-                                        TextSpan(
-                                            style: TextStyle(
-                                              fontSize: 12,
-                                              color: Colors.black54,
-                                            ),
-                                            text: "/ Person")
-                                      ]),
+                                      text: nearbyPlaces[index].distance,
+
+                                  ),
                                 )
                               ],
                             )

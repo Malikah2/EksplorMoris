@@ -28,7 +28,7 @@ class LocationCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 5),
                 Text(
-                  "Royal Road Brisee Verdiere",
+                  "Tamassa Bel Ombre",
                   style: Theme.of(context).textTheme.labelLarge,
                 )
               ],

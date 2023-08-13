@@ -8,7 +8,7 @@ class TouristPlacesModel {
 }
 
 List<TouristPlacesModel> touristPlaces = [
-  TouristPlacesModel(name: "Beach", image: "assets/icons/beach1.webp"),
+  TouristPlacesModel(name: "Beaches", image: "assets/icons/beach1.webp"),
   TouristPlacesModel(name: "Foods", image: "assets/icons/food1.jpg"),
   TouristPlacesModel(name: "Islands", image: "assets/icons/island.jpg"),
   TouristPlacesModel(name: "Malls", image: "assets/icons/mall.jpg"),

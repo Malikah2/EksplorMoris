@@ -27,6 +27,7 @@ class HomePage extends StatelessWidget {
             const Text("Good Morning"),
             Text("Malikah",
             style: Theme.of(context).textTheme.labelMedium,
+
         ),
           ],
         ),
