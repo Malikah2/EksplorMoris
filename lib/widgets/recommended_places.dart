@@ -36,59 +36,34 @@ class RecommendedPlaces extends StatelessWidget {
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(10),
-                    child: Column(
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(12),
-                          child: Image.asset(
-                            recommendedPlaces[index].image,
-                            width: double.maxFinite,
-                            fit: BoxFit.cover,
-                            height: 150,
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(12),
+                            child: Image.asset(
+                              recommendedPlaces[index].image,
+                              width: double.maxFinite,
+                              fit: BoxFit.cover,
+                              height: 150,
+                            ),
                           ),
-                        ),
-                        const SizedBox(height: 5),
-                        Row(
-                          children: [
-                            const Text(
-                              "St Regis Bora Bora",
-                              style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold,
+                          const SizedBox(height: 10),
+                          Center(
+                            child:
+                              Text(
+                                recommendedPlaces[index].text,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
-                            ),
-                            const Spacer(),
-                            Icon(
-                              Icons.star,
-                              color: Colors.yellow.shade700,
-                              size: 14,
-                            ),
-                            const Text(
-                              "4.4",
-                              style: TextStyle(
-                                fontSize: 12,
-                              ),
-                            )
-                          ],
-                        ),
-                        const SizedBox(height: 5),
-                        Row(
-                          children: [
-                            Icon(
-                              Ionicons.location,
-                              color: Theme.of(context).primaryColor,
-                              size: 16,
-                            ),
-                            const SizedBox(width: 5),
-                            const Text(
-                              "French Polynesia",
-                              style: TextStyle(
-                                fontSize: 12,
-                              ),
-                            )
-                          ],
-                        )
-                      ],
+                          ),
+                          const SizedBox(height: 5),
+
+                        ],
+                      ),
                     ),
                   ),
                 ),

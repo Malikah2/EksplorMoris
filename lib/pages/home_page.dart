@@ -59,7 +59,7 @@ class HomePage extends StatelessWidget {
             children: [
               Text("Recommendation", style: Theme.of(context).textTheme.headline6,
               ),
-              TextButton(onPressed: (){}, child: Text("View All")),
+              //TextButton(onPressed: (){}, child: Text("View All")),
             ],
           ),
           //recommendation
@@ -73,7 +73,7 @@ class HomePage extends StatelessWidget {
                 "Nearby From You",
                 style: Theme.of(context).textTheme.headline6,
               ),
-              TextButton(onPressed: (){}, child: const Text("View All"),)
+              //TextButton(onPressed: (){}, child: const Text("View All"),)
             ],
           ),
           const SizedBox(height: 10,),

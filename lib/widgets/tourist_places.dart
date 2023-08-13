@@ -19,7 +19,7 @@ class TouristPlaces extends StatelessWidget {
               backgroundImage: AssetImage(touristPlaces[index].image),
             ),
             backgroundColor: Colors.white,
-            elevation: 0.4,
+            elevation: 1,
             shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
           );

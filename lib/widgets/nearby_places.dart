@@ -49,14 +49,14 @@ class NearbyPlaces extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text(
-                              "Sea of Peace",
+                             Text(
+                              nearbyPlaces[index].name,
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            const Text("Portic Team"),
+                            Text(nearbyPlaces[index].description),
                             const SizedBox(height: 10),
                             // DISTANCE WIDGET
                             const Distance(),
