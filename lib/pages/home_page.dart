@@ -50,9 +50,9 @@ class HomePage extends StatelessWidget {
         padding: const EdgeInsets.all(14),
         children:  [
           // Location card
-          const LocationCard(),
+           LocationCard(),
           const SizedBox(height: 15,),
-          const TouristPlaces(),
+           TouristPlaces(),
           //categories
           const SizedBox(height: 10,),
           Row(
@@ -65,7 +65,7 @@ class HomePage extends StatelessWidget {
           ),
           //recommendation
           const SizedBox(height: 10,),
-          const RecommendedPlaces(),
+           RecommendedPlaces(),
           const SizedBox(height: 10,),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -78,7 +78,7 @@ class HomePage extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 10,),
-          const NearbyPlaces(),
+           NearbyPlaces(),
         ],
       ),
     );

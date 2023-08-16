@@ -23,13 +23,13 @@ class NearbyPlaces extends StatelessWidget {
               child: InkWell(
                 borderRadius: BorderRadius.circular(12),
                 onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => TouristDetailsPage(
-                          image: nearbyPlaces[index].image,
-                        ),
-                      ));
+                  // Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //       builder: (context) => TouristDetailsPage(
+                  //         image: nearbyPlaces[index].image,
+                  //       ),
+                  //     ));
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
