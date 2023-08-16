@@ -6,7 +6,7 @@ import 'package:example/pages/other_page.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:example/widgets/custom_icon_button.dart';
 import 'package:flutter/material.dart';
-
+import 'hotlines.dart';
 
 class OtherPage extends StatelessWidget{
   const OtherPage({Key? key}) : super(key:key);
@@ -48,11 +48,18 @@ class OtherPage extends StatelessWidget{
 
 
       body: ListView(
-
-        children: const [
-
-
-
+        padding: const EdgeInsets.all(14),
+        children:  [
+            Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("Hotlines", style: Theme.of(context).textTheme.headline6,
+                  ),
+                  TextButton(onPressed: (){}, child: Text("View All")),
+                ],
+            ),
+          const SizedBox(height:10),
+          const Hotlines(),
         ],
 
       ),
