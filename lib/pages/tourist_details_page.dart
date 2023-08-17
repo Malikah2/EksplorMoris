@@ -12,6 +12,12 @@ class TouristPlace {
   final String price;
   final String location;
   final String rating;
+  final String duration;
+  final String image1;
+  final String image2;
+  final String image3;
+  final String image4;
+  final String image5;
 
   TouristPlace({
     required this.image,
@@ -21,6 +27,12 @@ class TouristPlace {
     required this.price,
     required this.location,
     required this.rating,
+    required this.duration,
+    required this.image1,
+    required this.image2,
+    required this.image3,
+    required this.image4,
+    required this.image5,
   });
 }
 
@@ -125,19 +137,19 @@ class TouristDetailsPage extends StatelessWidget {
                           ),
                           textAlign: TextAlign.center,
                         ),
-                        if (place.subtitle.isEmpty)
-                          SizedBox(
-                            height: 6.0,
-                          ),
-                        if (place.subtitle.isNotEmpty)
-                          Text(
-                            place.subtitle,
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            textAlign: TextAlign.right,
-                          ),
+                        // if (place.subtitle.isEmpty)
+                        //   SizedBox(
+                        //     height: 6.0,
+                        //   ),
+                        // if (place.subtitle.isNotEmpty)
+                        //   Text(
+                        //     place.subtitle,
+                        //     style: TextStyle(
+                        //       fontSize: 12,
+                        //       fontWeight: FontWeight.bold,
+                        //     ),
+                        //     textAlign: TextAlign.right,
+                        //   ),
                         SizedBox(
                           height: 10.0,
                         ),

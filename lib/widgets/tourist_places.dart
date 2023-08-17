@@ -15,11 +15,11 @@ class TouristPlaces extends StatelessWidget {
         physics: const BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
-          final tp.TouristPlace touristPlace = touristPlaces[index];
+          final tp.RoundTouristPlace touristPlace = touristPlaces[index];
           return GestureDetector(
             onTap: (){
               Navigator.push(context, MaterialPageRoute(
-                  builder: (context) => DetailsPage(touristPlace: touristPlace),
+                  builder: (context) => DetailsPage(),
               ),
               );
             },
