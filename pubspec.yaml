@@ -45,5 +45,11 @@ flutter:
     - assets/hiking/
     - assets/historical/
     - assets/Nature/
-    - assets/waterfals/
+    - assets/waterfalls/
+    - assets/quad/
+    - assets/beach/
+    - assets/food/
+    - assets/hotel/
+    - assets/island/
+    - assets/mall/
 

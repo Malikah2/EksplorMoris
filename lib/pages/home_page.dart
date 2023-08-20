@@ -78,7 +78,7 @@ class HomePage extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 10,),
-           NearbyPlaces(),
+           NearbyPlaces(nearby: [],),
         ],
       ),
     );

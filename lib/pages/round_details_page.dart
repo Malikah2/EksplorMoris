@@ -1,10 +1,7 @@
-
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
-
-import 'individual_place.dart';
+import 'package:example/pages/individual_location.dart';
 
 class roundDetails {
   final String image;
@@ -56,14 +53,15 @@ class roundDetailsPage extends StatelessWidget {
                   final place = placeList[index];
                   return GestureDetector(
                     onTap: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) => IndividualPlacePage(
-                      //       place: place, // Pass the selected place to the details page
-                      //     ),
-                      //   ),
-                      // );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => IndividualLocationPage(
+                            roundplace: place,
+                                                       // Pass the selected place to the details page
+                          ),
+                        ),
+                      );
                     },
                     child: Column(
                       children: [

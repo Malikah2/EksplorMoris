@@ -135,11 +135,8 @@
 
 import 'dart:ui';
 import 'package:example/pages/tourist_details_page.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-
-import '../models/tourist_places_model.dart';
 
 class IndividualPlacePage extends StatefulWidget {
   final TouristPlace place;

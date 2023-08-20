@@ -1,10 +1,12 @@
+import 'package:example/pages/individual_nearbyplaces.dart';
 import 'package:flutter/material.dart';
 import 'package:example/models/nearby_places_model.dart';
 import 'package:example/pages/tourist_details_page.dart';
 import 'package:example/widgets/distance.dart';
 
 class NearbyPlaces extends StatelessWidget {
-  const NearbyPlaces({Key? key}) : super(key: key);
+  final List<NearbyPlaceModel> nearby;
+  const NearbyPlaces({Key? key, required this.nearby}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,13 +25,13 @@ class NearbyPlaces extends StatelessWidget {
               child: InkWell(
                 borderRadius: BorderRadius.circular(12),
                 onTap: () {
-                  // Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //       builder: (context) => TouristDetailsPage(
-                  //         image: nearbyPlaces[index].image,
-                  //       ),
-                  //     ));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => IndividualNearbyplacePage(
+                          nearbyPlace: nearby[index],
+                        ),
+                      ));
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
