@@ -51,7 +51,7 @@ class _HomeState extends State{
           ),
           BottomNavigationBarItem(
           icon: Icon(Ionicons.person_outline),
-          label: "Profile",
+          label: "Profiles",
           ),
         ]
       ),
