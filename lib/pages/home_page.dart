@@ -4,14 +4,23 @@ import 'package:example/widgets/nearby_places.dart';
 import 'package:example/widgets/recommended_places.dart';
 import 'package:example/widgets/tourist_places.dart';
 import 'package:ionicons/ionicons.dart';
+import '../models/nearby_places_model.dart';
 import 'home_widget.dart';
 import 'other_page.dart';
 
 import 'package:example/widgets/custom_icon_button.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+
+class HomePage extends StatefulWidget {
   const HomePage({ Key? key}) : super(key: key);
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage>{
+  bool _isSearchBarVisible = false;
 
   @override
   Widget build(BuildContext context){
@@ -32,8 +41,13 @@ class HomePage extends StatelessWidget {
           ],
         ),
     actions:  [
-       CustomIconButton(
+       IconButton(
         icon: Icon(Ionicons.search_outline),
+         onPressed: () {
+          setState(() {
+            _isSearchBarVisible = !_isSearchBarVisible;
+          });
+         }
         ),
      Padding(
        padding: EdgeInsets.only(left: 8.0, right: 12),
@@ -78,9 +92,25 @@ class HomePage extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 10,),
-           NearbyPlaces(nearby: [],),
+           NearbyPlaces(),
+
+          //SearchBar
+          Visibility(
+              visible: _isSearchBarVisible,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                child: TextFormField(
+                  decoration:  InputDecoration(
+                    hintText: "Search...",
+                    prefixIcon: Icon(Icons.search),
+                    border: OutlineInputBorder(),
+                  ),
+                ),
+              )
+          )
         ],
       ),
     );
+
   }
 }

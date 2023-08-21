@@ -5,8 +5,7 @@ import 'package:example/pages/tourist_details_page.dart';
 import 'package:example/widgets/distance.dart';
 
 class NearbyPlaces extends StatelessWidget {
-  final List<NearbyPlaceModel> nearby;
-  const NearbyPlaces({Key? key, required this.nearby}) : super(key: key);
+  const NearbyPlaces({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +28,7 @@ class NearbyPlaces extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) => IndividualNearbyplacePage(
-                          nearbyPlace: nearby[index],
+                          nearbyPlace: nearbyPlaces[index],
                         ),
                       ));
                 },

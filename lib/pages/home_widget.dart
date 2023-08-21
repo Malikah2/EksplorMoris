@@ -10,17 +10,13 @@ import 'home_page.dart';
 import 'other_page.dart';
 
 class Home extends StatefulWidget{
-
   @override
-
   State createState(){
     return _HomeState();
   }
-
 }
 
 class _HomeState extends State{
-
   int _currentIndex=0;
   final List _children= [
     HomePage(),
@@ -32,26 +28,28 @@ class _HomeState extends State{
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      body: _children[_currentIndex],
+      body:
+      _children[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         onTap: onTabTapped,
         currentIndex: _currentIndex,
         items: const<BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Ionicons.home_outline),
+            icon: Icon(Ionicons.home_outline, size: 24.0, color: Colors.blue,),
             label: "Home"
           ),
           BottomNavigationBarItem(
-          icon: Icon(Ionicons.bookmark_outline),
-          label: "Bookmark",
+          icon: Icon(Ionicons.bookmark_outline, size: 24.0,color: Colors.blue,),
+          label: "Emergencies",
           ),
           BottomNavigationBarItem(
-          icon: Icon(Ionicons.heart),
+          icon: Icon(Ionicons.heart_outline, size: 24.0, color: Colors.blue,),
          label: "Favorites",
           ),
           BottomNavigationBarItem(
-          icon: Icon(Ionicons.person_outline),
-          label: "Profiles",
+          icon: Icon(Ionicons.person_outline, size: 24.0, color: Colors.blue,),
+          label: "Profile",
           ),
         ]
       ),
