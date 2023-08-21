@@ -1,9 +1,11 @@
 import 'package:example/pages/home_page.dart';
+import 'package:example/pages/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:example/pages/other_page.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:example/widgets/custom_icon_button.dart';
 import 'package:flutter/material.dart';
+import 'favorites_page.dart';
 import 'home_page.dart';
 import 'other_page.dart';
 
@@ -22,9 +24,9 @@ class _HomeState extends State{
   int _currentIndex=0;
   final List _children= [
     HomePage(),
-    //FavouritesPage(),
     OtherPage(),
-    //ProfilePage(),
+    FavoritesPage(),
+    ProfilePage(),
   ];
 
   @override
@@ -43,14 +45,14 @@ class _HomeState extends State{
           icon: Icon(Ionicons.bookmark_outline),
           label: "Bookmark",
           ),
-          //BottomNavigationBarItem(
-          //icon: Icon(Ionicons.ticket_outline),
-         // label: "Ticket",
-          //),
-          //BottomNavigationBarItem(
-          //icon: Icon(Ionicons.person_outline),
-          //label: "Profile",
-          //),
+          BottomNavigationBarItem(
+          icon: Icon(Ionicons.heart),
+         label: "Favorites",
+          ),
+          BottomNavigationBarItem(
+          icon: Icon(Ionicons.person_outline),
+          label: "Profile",
+          ),
         ]
       ),
     );
