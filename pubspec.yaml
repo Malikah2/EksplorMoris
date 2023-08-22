@@ -19,6 +19,7 @@ dependencies:
   google_fonts: ^5.1.0
   firebase_core: ^2.15.0
   firebase_auth: ^4.7.2
+  carousel_slider: ^4.0.0
 
 dev_dependencies:
   flutter_test:
@@ -38,6 +39,17 @@ flutter:
     - assets/icons/
     - assets/
     - assets/hotlines/
-    - assets/hospitals/
-    - assets/pharmacy/
-    - assets/bank/
+    - assets/casino/
+    - assets/catamaran/
+    - assets/dolphin/
+    - assets/hiking/
+    - assets/historical/
+    - assets/Nature/
+    - assets/waterfalls/
+    - assets/quad/
+    - assets/beach/
+    - assets/food/
+    - assets/hotel/
+    - assets/island/
+    - assets/mall/
+

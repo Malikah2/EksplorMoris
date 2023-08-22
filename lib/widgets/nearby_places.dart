@@ -1,3 +1,4 @@
+import 'package:example/pages/individual_nearbyplaces.dart';
 import 'package:flutter/material.dart';
 import 'package:example/models/nearby_places_model.dart';
 import 'package:example/pages/tourist_details_page.dart';
@@ -26,8 +27,8 @@ class NearbyPlaces extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => TouristDetailsPage(
-                          image: nearbyPlaces[index].image,
+                        builder: (context) => IndividualNearbyplacePage(
+                          nearbyPlace: nearbyPlaces[index],
                         ),
                       ));
                 },
