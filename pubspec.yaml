@@ -39,6 +39,10 @@ flutter:
     - assets/icons/
     - assets/
     - assets/hotlines/
+    - assets/hospitals/
+    - assets/bank/
+    - assets/pharmacy/
+    - assets/profile/
     - assets/casino/
     - assets/catamaran/
     - assets/dolphin/

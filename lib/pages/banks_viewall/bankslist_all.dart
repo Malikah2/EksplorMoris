@@ -10,7 +10,6 @@ import '../other_page.dart';
 import 'banks_viewall.dart';
 import 'banks_models_viewall.dart';
 
-
 class BanksList extends StatelessWidget {
   const BanksList ({Key? key}) : super(key: key);
 
