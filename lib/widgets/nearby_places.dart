@@ -1,3 +1,4 @@
+import 'package:example/pages/individual_location.dart';
 import 'package:example/pages/individual_nearbyplaces.dart';
 import 'package:flutter/material.dart';
 import 'package:example/models/nearby_places_model.dart';
@@ -27,9 +28,8 @@ class NearbyPlaces extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => IndividualNearbyplacePage(
-                          nearbyPlace: nearbyPlaces[index],
-                        ),
+                        builder: (context) => IndividualLocationPage(
+                            roundplace: nearbyPlaces[index]),
                       ));
                 },
                 child: Padding(
@@ -45,24 +45,26 @@ class NearbyPlaces extends StatelessWidget {
                           fit: BoxFit.cover,
                         ),
                       ),
-                      const SizedBox(width: 10,),
+                      const SizedBox(
+                        width: 10,
+                      ),
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             const Spacer(),
-                             Padding(
-                               padding: const EdgeInsets.only(bottom: 1),
-                               child: Center(
-                                 child: Text(
+                            Padding(
+                              padding: const EdgeInsets.only(bottom: 1),
+                              child: Center(
+                                child: Text(
                                   nearbyPlaces[index].name,
                                   style: TextStyle(
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold,
                                   ),
+                                ),
+                              ),
                             ),
-                               ),
-                             ),
 
                             // DISTANCE WIDGET
                             //const Distance(),
@@ -83,12 +85,11 @@ class NearbyPlaces extends StatelessWidget {
                                 const Spacer(),
                                 RichText(
                                   text: TextSpan(
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        color: Colors.black54,
-                                      ),
-                                      text: nearbyPlaces[index].distance,
-
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                      color: Colors.black54,
+                                    ),
+                                    text: nearbyPlaces[index].distance,
                                   ),
                                 )
                               ],

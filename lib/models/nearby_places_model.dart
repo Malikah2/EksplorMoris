@@ -1,34 +1,8 @@
-class NearbyPlaceModel {
-  final String image;
-  final String name;
-  final String distance;
-  final String duration;
-  final String rating;
-  final String description;
-  final String image1;
-  final String image2;
-  final String image3;
-  final String image4;
-  final String image5;
+import 'package:example/pages/tourist_details_page.dart';
 
-
-  NearbyPlaceModel({
-    required this.image,
-    required this.name,
-    required this.distance,
-    required this.duration,
-    required this.rating,
-    required this.description,
-    required this.image1,
-    required this.image2,
-    required this.image3,
-    required this.image4,
-    required this.image5,
-
-  });
-}
-List<NearbyPlaceModel> nearbyPlaces = [
-  NearbyPlaceModel(
+List<TouristPlace> nearbyPlaces = [
+  TouristPlace(
+    id: '63',
     image: "assets/lemorne.jpg",
     name: 'Le Morne Brabant',
     distance: '16.0 Km',
@@ -40,9 +14,11 @@ List<NearbyPlaceModel> nearbyPlaces = [
     image3: 'assets/hiking/hiking3.jpg',
     image4: 'assets/hiking/hiking4.jpg',
     image5: 'assets/hiking/hiking5.jpg',
+    subtitle: '', price: '', location: '',
   ),
 
-  NearbyPlaceModel(
+  TouristPlace(
+    id: '64',
     image: "assets/chamarel.jpg",
     name: 'Chamarel Waterfall',
     distance: '16.6 Km',
@@ -54,9 +30,10 @@ List<NearbyPlaceModel> nearbyPlaces = [
     image3: 'assets/waterfalls/waterfall8.jpg',
     image4: 'assets/waterfalls/waterfall9.jpg',
     image5: 'assets/waterfalls/waterfall10.jpg',
-  ),
+    subtitle: '', price: '', location: '',  ),
 
-  NearbyPlaceModel(
+  TouristPlace(
+    id: '65',
     image: "assets/coloured.jpg",
     name: 'Chamarel 7 Coloured earth',
     distance: '18.0 Km',
@@ -68,9 +45,10 @@ List<NearbyPlaceModel> nearbyPlaces = [
     image3: 'assets/chamarel3.jpg',
     image4: 'assets/chamarel4.jpg',
     image5: 'assets/chamarel5.jpg',
-  ),
+    subtitle: '', price: '', location: '',  ),
 
-  NearbyPlaceModel(
+  TouristPlace(
+    id: '66',
     image: "assets/ileBenitier.jpg",
     name: 'Benitiers Island & Crystal Rock',
     distance: '16.8 Km',
@@ -82,10 +60,11 @@ List<NearbyPlaceModel> nearbyPlaces = [
     image3: 'assets/catamaran/catamaran18.jpg',
     image4: 'assets/catamaran/catamaran19.jpg',
     image5: 'assets/catamaran/catamaran20.jpg',
-
+    subtitle: '', price: '', location: '',
   ),
 
-  NearbyPlaceModel(
+  TouristPlace(
+    id: '67',
     image: "assets/grisgris.jpg",
     name: 'Gris Gris Beach',
     distance: '15.7 Km',
@@ -97,9 +76,11 @@ List<NearbyPlaceModel> nearbyPlaces = [
     image3: 'assets/grisgris3.jpg',
     image4: 'assets/grisgris4.jpg',
     image5: 'assets/grisgris5.jpg',
+    subtitle: '', price: '', location: '',
   ),
 
-  NearbyPlaceModel(
+  TouristPlace(
+    id: '68',
     image: "assets/rhumerie.jpg",
     name: 'Rhumerie De Chamarel',
     distance: '17.7 Km',
@@ -111,9 +92,11 @@ List<NearbyPlaceModel> nearbyPlaces = [
     image3: 'assets/rhum3.png',
     image4: 'assets/rhum4.jpg',
     image5: 'assets/rhum5.png',
+    subtitle: '', price: '', location: '',
   ),
 
-  NearbyPlaceModel(
+  TouristPlace(
+    id: '69',
     image: "assets/lavanille.jpg",
     name: 'La Vanille Crocodile Park',
     distance: '23.2 Km',
@@ -125,5 +108,6 @@ List<NearbyPlaceModel> nearbyPlaces = [
     image3: 'assets/crocodile3.jpg',
     image4: 'assets/crocodile4.jpg',
     image5: 'assets/crocodile5.jpg',
+    subtitle: '', price: '', location: '',
   ),
 ];
