@@ -1,10 +1,14 @@
 //version 4
+import 'package:example/pages/individual_location.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 
+import 'favorites.dart';
+import 'favorites_page.dart';
 import 'individual_place.dart';
 
 class TouristPlace {
+  final String id;
   final String image;
   final String name;
   final String subtitle;
@@ -18,8 +22,10 @@ class TouristPlace {
   final String image3;
   final String image4;
   final String image5;
+  final String distance;
 
   TouristPlace({
+    required this.id,
     required this.image,
     required this.name,
     required this.subtitle,
@@ -33,13 +39,19 @@ class TouristPlace {
     required this.image3,
     required this.image4,
     required this.image5,
+    required this.distance,
   });
 }
 
+Favorites favorites = Favorites();
+
 class TouristDetailsPage extends StatelessWidget {
   final List<TouristPlace> places;
+  final List<TouristPlace> favoritesPlaces = [];
+late IconData currentIcon = Icons.favorite_border;
+bool saved = false;
 
-  const TouristDetailsPage({Key? key, required this.places}) : super(key: key);
+  TouristDetailsPage({Key? key, required this.places}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -63,10 +75,8 @@ class TouristDetailsPage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => IndividualPlacePage(
-                            place:
-                                place, // Pass the selected place to the details page
-                          ),
+                          builder: (context) =>
+                              IndividualLocationPage(roundplace: place),
                         ),
                       );
                     },
@@ -92,6 +102,35 @@ class TouristDetailsPage extends StatelessWidget {
                                     fit: BoxFit.fill,
                                   ),
                                 ),
+                                Positioned(
+                                  top: 10, // Adjust the position as needed
+                                  right: 10, // Adjust the position as needed
+                                  child: IconButton(
+                                    onPressed: () {
+                                      String message = favorites.toggleFavorites(place);
+                                      String showMessage = message == 'added'
+                                          ? '${place.name} added to favorites'
+                                          : '${place.name} removed from favorites';
+
+                                      final scaffoldMessenger = ScaffoldMessenger.of(context);
+                                      scaffoldMessenger.showSnackBar(
+                                      SnackBar(
+                                      content: Text(showMessage),
+                                      duration: Duration(seconds: 1),
+                                      ),
+                                      );
+                                     saved = !saved;
+                                     currentIcon =  saved
+                                      ? Icons.favorite
+                                         : Icons.favorite_border;
+                                    },
+                                    icon: Icon(
+                                     currentIcon,
+                                      color: Colors.white,
+                                      size: 24,
+                                    ),
+                                  ),
+                                ),
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(20),
                                   child: Container(
@@ -100,7 +139,6 @@ class TouristDetailsPage extends StatelessWidget {
                                     decoration: BoxDecoration(
                                       color: Colors.black.withOpacity(0.5),
                                       borderRadius: BorderRadius.circular(15),
-
                                     ),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.min,
@@ -187,4 +225,12 @@ class TouristDetailsPage extends StatelessWidget {
       ),
     );
   }
+
+  // void toggleFavorite(TouristPlace place) {
+  //   if (favoritesPlaces.contains(place)) {
+  //     favoritesPlaces.remove(place);
+  //   } else {
+  //     favoritesPlaces.add(place);
+  //   }
+  // }
 }

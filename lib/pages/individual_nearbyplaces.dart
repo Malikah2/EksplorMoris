@@ -3,10 +3,13 @@ import 'dart:ui';
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:example/models/nearby_places_model.dart';
+import 'package:example/pages/tourist_details_page.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:example/pages/favorites_page.dart';
 
 class IndividualNearbyplacePage extends StatefulWidget {
-  final NearbyPlaceModel nearbyPlace;
+  final TouristPlace nearbyPlace;
 
   IndividualNearbyplacePage({Key? key, required this.nearbyPlace}) : super(key: key);
 
@@ -16,6 +19,7 @@ class IndividualNearbyplacePage extends StatefulWidget {
 
 class _IndividualNearbyplacePageState extends State<IndividualNearbyplacePage> {
   bool isDescriptionExpanded = false;
+  List<TouristPlace> favoritesPlaces = [];
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +30,34 @@ class _IndividualNearbyplacePageState extends State<IndividualNearbyplacePage> {
             SizedBox(height: 20.0),
             SizedBox(
               width: double.infinity,
-              child: Image.asset(widget.nearbyPlace.image),
+              child: Stack(
+                alignment: Alignment.topRight,
+                children: [
+                Image.asset(widget.nearbyPlace.image),
+              Positioned(
+                  top: 10,
+                  right: 10,
+                  child: IconButton(
+                    onPressed: () {
+                      setState(() {
+                        if (favoritesPlaces.contains(widget.nearbyPlace)) {
+                          favoritesPlaces.remove(widget.nearbyPlace);
+                        } else {
+                          favoritesPlaces.add(widget.nearbyPlace);
+                        }
+                      });
+                    },
+                    icon: Icon(
+                      favoritesPlaces.contains(widget.nearbyPlace)
+                      ? Icons.favorite
+                      : Icons.favorite_border,
+                      color: Colors.white,
+                      size: 24,
+                    ),
+                  ),
+              ),
+              ],
+              ),
             ),
             buttonArrow(context),
             scroll(),

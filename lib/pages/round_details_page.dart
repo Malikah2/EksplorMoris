@@ -1,43 +1,20 @@
+import 'package:example/pages/tourist_details_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:example/pages/individual_location.dart';
 
-class roundDetails {
-  final String image;
-  final String name;
-  final String subtitle;
-  final String description;
-  final String price;
-  final String location;
-  final String rating;
-  final String duration;
-  final String image1;
-  final String image2;
-  final String image3;
-  final String image4;
-  final String image5;
+import 'favorites.dart';
 
-  roundDetails({
-    required this.image,
-    required this.name,
-    required this.subtitle,
-    required this.description,
-    required this.price,
-    required this.location,
-    required this.rating,
-    required this.duration,
-    required this.image1,
-    required this.image2,
-    required this.image3,
-    required this.image4,
-    required this.image5,
-  });
-}
+Favorites favorites = Favorites();
+
 class roundDetailsPage extends StatelessWidget {
-  final List<roundDetails> placeList;
+  final List<TouristPlace> placeList;
+  final List<TouristPlace> favoritesPlaces = [];
+  late IconData currentIcon = Icons.favorite_border;
+  bool saved = false;
 
-  const roundDetailsPage({Key? key, required this.placeList}) : super(key: key);
+   roundDetailsPage({Key? key, required this.placeList}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -83,6 +60,35 @@ class roundDetailsPage extends StatelessWidget {
                                   child: Image.asset(
                                     place.image,
                                     fit: BoxFit.fill,
+                                  ),
+                                ),
+                                Positioned(
+                                    top: 10,
+                                  right: 10,
+                                  child: IconButton(
+                                    onPressed: () {
+                                      String message = favorites.toggleFavorites(place);
+                                      String showMessage = message == 'added'
+                                          ? '${place.name} added to favorites'
+                                          : '${place.name} removed from favorites';
+
+                                      final scaffoldMessenger = ScaffoldMessenger.of(context);
+                                      scaffoldMessenger.showSnackBar(
+                                        SnackBar(
+                                          content: Text(showMessage),
+                                          duration: Duration(seconds: 1),
+                                        ),
+                                      );
+                                      saved = !saved;
+                                      currentIcon =  saved
+                                          ? Icons.favorite
+                                          : Icons.favorite_border;
+                                    },
+                                    icon: Icon(
+                                      currentIcon,
+                                      color: Colors.white,
+                                      size: 24,
+                                    ),
                                   ),
                                 ),
                                 ClipRRect(

@@ -2,20 +2,29 @@ import 'dart:ui';
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:example/pages/round_details_page.dart';
+import 'package:example/pages/tourist_details_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class IndividualLocationPage extends StatefulWidget{
-  final roundDetails roundplace;
+import 'favorites.dart';
 
-  IndividualLocationPage({Key? key, required this.roundplace}) : super(key: key);
+Favorites favorites = Favorites();
+
+class IndividualLocationPage extends StatefulWidget {
+  final TouristPlace roundplace;
+
+  IndividualLocationPage({Key? key, required this.roundplace})
+      : super(key: key);
 
   @override
   _IndividualLocationPageState createState() => _IndividualLocationPageState();
 }
 
-class _IndividualLocationPageState extends State<IndividualLocationPage>{
+class _IndividualLocationPageState extends State<IndividualLocationPage> {
   bool isDescriptionExpanded = false;
+  final List<TouristPlace> favoritesPlaces = [];
+  late IconData currentIcon = Icons.favorite_border;
+  bool saved = false;
 
   @override
   Widget build(BuildContext context) {
@@ -32,13 +41,44 @@ class _IndividualLocationPageState extends State<IndividualLocationPage>{
             scroll(),
           ],
         ),
+        floatingActionButton: Column(
+          children: [
+            SizedBox(height: 20),
+            IconButton(
+              onPressed: () {
+                String message = favorites.toggleFavorites(widget.roundplace);
+                String showMessage = message == 'added'
+                    ? '${widget.roundplace.name} added to favorites'
+                    : '${widget.roundplace.name} removed from favorites';
+
+                final scaffoldMessenger = ScaffoldMessenger.of(context);
+                scaffoldMessenger.showSnackBar(
+                  SnackBar(
+                    content: Text(showMessage),
+                    duration: Duration(seconds: 1),
+                  ),
+                );
+                saved = !saved;
+                currentIcon = saved
+                    ? Icons.favorite
+                    : Icons.favorite_border;
+              },
+              icon: Icon(
+                currentIcon,
+                color: Colors.white,
+                size: 24,
+              ),
+            ),
+          ],
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.miniEndTop,
       ),
     );
   }
 
-  Widget buttonArrow(BuildContext context){
+  Widget buttonArrow(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.all(20.0),
+      padding: const EdgeInsets.all(20.0),
       child: InkWell(
         onTap: () {
           Navigator.pop(context);
@@ -51,19 +91,19 @@ class _IndividualLocationPageState extends State<IndividualLocationPage>{
             borderRadius: BorderRadius.circular(25),
           ),
           child: BackdropFilter(
-            filter: ImageFilter.blur(
-              sigmaX: 10,
-              sigmaY: 10
-            ),
-              child: Container(
-                height: 55,
-                width: 55,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(25),
-                ),
-                child: Icon(Icons.arrow_back_ios, size: 20, color: Colors.white,
-                ),
+            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+            child: Container(
+              height: 55,
+              width: 55,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(25),
               ),
+              child: Icon(
+                Icons.arrow_back_ios,
+                size: 20,
+                color: Colors.white,
+              ),
+            ),
           ),
         ),
       ),
@@ -73,9 +113,9 @@ class _IndividualLocationPageState extends State<IndividualLocationPage>{
   Widget scroll() {
     return DraggableScrollableSheet(
       initialChildSize: 0.6,
-        maxChildSize: 1.0,
-        minChildSize: 0.6,
-        builder: (context, scrollController) {
+      maxChildSize: 1.0,
+      minChildSize: 0.6,
+      builder: (context, scrollController) {
         return Container(
           padding: EdgeInsets.symmetric(horizontal: 20),
           clipBehavior: Clip.hardEdge,
@@ -92,7 +132,7 @@ class _IndividualLocationPageState extends State<IndividualLocationPage>{
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                    padding: const EdgeInsets.only(top: 10, bottom: 25),
+                  padding: const EdgeInsets.only(top: 10, bottom: 25),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -112,7 +152,9 @@ class _IndividualLocationPageState extends State<IndividualLocationPage>{
                   ),
                   textAlign: TextAlign.left,
                 ),
-                const SizedBox(height: 20,),
+                const SizedBox(
+                  height: 20,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -126,33 +168,49 @@ class _IndividualLocationPageState extends State<IndividualLocationPage>{
                     //     Text(widget.roundplace.price),
                     //   ],
                     // ),
-                    const SizedBox(width: 12,),
+                    const SizedBox(
+                      width: 12,
+                    ),
                     Row(
                       children: [
                         CircleAvatar(
                           radius: 25,
-                          child: Icon(Icons.location_on, color: Colors.white,),
+                          child: Icon(
+                            Icons.location_on,
+                            color: Colors.white,
+                          ),
                         ),
-                        const SizedBox(width: 8,),
+                        const SizedBox(
+                          width: 8,
+                        ),
                         Text(widget.roundplace.duration),
                       ],
                     ),
-                    const SizedBox(width: 12,),
+                    const SizedBox(
+                      width: 12,
+                    ),
                     Row(
                       children: [
                         CircleAvatar(
                           radius: 25,
-                          child: Icon(Icons.star_rate, color: Colors.white,),
+                          child: Icon(
+                            Icons.star_rate,
+                            color: Colors.white,
+                          ),
                         ),
-                        const SizedBox(width: 8,),
+                        const SizedBox(
+                          width: 8,
+                        ),
                         Text(widget.roundplace.rating),
                       ],
                     ),
                   ],
                 ),
                 const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 10),
-                  child: Divider(height: 5,),
+                  padding: EdgeInsets.symmetric(vertical: 10),
+                  child: Divider(
+                    height: 5,
+                  ),
                 ),
                 Text(
                   "Description",
@@ -162,7 +220,9 @@ class _IndividualLocationPageState extends State<IndividualLocationPage>{
                   ),
                   textAlign: TextAlign.center,
                 ),
-                const SizedBox(height: 15,),
+                const SizedBox(
+                  height: 15,
+                ),
                 GestureDetector(
                   onTap: () {
                     setState(() {
@@ -172,45 +232,68 @@ class _IndividualLocationPageState extends State<IndividualLocationPage>{
                   child: Text(
                     isDescriptionExpanded
                         ? widget.roundplace.description
-                    : (widget.roundplace.description.length > 100
-                        ? widget.roundplace.description.substring(0, 100) + "... Read More"
-                          : widget.roundplace.description),
+                        : (widget.roundplace.description.length > 100
+                            ? widget.roundplace.description.substring(0, 100) +
+                                "... Read More"
+                            : widget.roundplace.description),
                     style: TextStyle(
                       fontSize: 16,
                     ),
                   ),
                 ),
                 const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 10),
+                  padding: EdgeInsets.symmetric(vertical: 10),
                   child: Divider(
                     height: 0,
                   ),
                 ),
-                const SizedBox(height: 10,),
+                const SizedBox(
+                  height: 10,
+                ),
                 CarouselSlider(
-                    items: [
-                      Image.asset(widget.roundplace.image1, height: 155,width: 270,),
-                      Image.asset(widget.roundplace.image2, height: 155,width: 270,),
-                      Image.asset(widget.roundplace.image3, height: 155,width: 270,),
-                      Image.asset(widget.roundplace.image4, height: 155,width: 270,),
-                      Image.asset(widget.roundplace.image5, height: 155,width: 270,),
-                    ],
-                    options: CarouselOptions(
+                  items: [
+                    Image.asset(
+                      widget.roundplace.image1,
                       height: 155,
-                      enlargeCenterPage: true,
-                      aspectRatio: 16 / 9,
-                      autoPlay: true,
-                      autoPlayCurve: Curves.fastOutSlowIn,
-                      enableInfiniteScroll: true,
-                      autoPlayAnimationDuration: Duration(milliseconds: 800),
-                      viewportFraction: 0.8,
+                      width: 270,
                     ),
+                    Image.asset(
+                      widget.roundplace.image2,
+                      height: 155,
+                      width: 270,
+                    ),
+                    Image.asset(
+                      widget.roundplace.image3,
+                      height: 155,
+                      width: 270,
+                    ),
+                    Image.asset(
+                      widget.roundplace.image4,
+                      height: 155,
+                      width: 270,
+                    ),
+                    Image.asset(
+                      widget.roundplace.image5,
+                      height: 155,
+                      width: 270,
+                    ),
+                  ],
+                  options: CarouselOptions(
+                    height: 155,
+                    enlargeCenterPage: true,
+                    aspectRatio: 16 / 9,
+                    autoPlay: true,
+                    autoPlayCurve: Curves.fastOutSlowIn,
+                    enableInfiniteScroll: true,
+                    autoPlayAnimationDuration: Duration(milliseconds: 800),
+                    viewportFraction: 0.8,
+                  ),
                 ),
               ],
             ),
           ),
         );
-        },
+      },
     );
   }
 }

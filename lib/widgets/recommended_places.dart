@@ -6,6 +6,7 @@ class RecommendedPlaces extends StatelessWidget {
   RecommendedPlaces({Key? key}) : super(key: key);
   final List<TouristPlace> TouristDetailsPageDolpins = [
     TouristPlace(
+      id: '1',
       image: 'assets/dolphin1.jpg',
       name: 'Dolphin trip/Private boat tour le morne/Crystal rock LydiaBoat',
       subtitle: 'About',
@@ -18,9 +19,10 @@ class RecommendedPlaces extends StatelessWidget {
       image2: 'assets/dolphin/image2.jpg',
       image3: 'assets/dolphin/image3.jpg',
       image4: 'assets/dolphin/image4.jpg',
-      image5: 'assets/dolphin/image5.jpg',
+      image5: 'assets/dolphin/image5.jpg', distance: '',
     ),
     TouristPlace(
+      id: '2',
       image: 'assets/dolphin4.jpg',
       name: 'Full-Day Mauritius Volcanic Wonders Tour Including Swimming with Wild Dolphins',
       subtitle: 'As From Rs500 per adult',
@@ -34,9 +36,10 @@ class RecommendedPlaces extends StatelessWidget {
       image3: 'assets/dolphin/image8.jpg',
       image4: 'assets/dolphin/image9.jpg',
       image5: 'assets/dolphin/image10.jpg',
-
+      distance: '',
     ),
     TouristPlace(
+      id: '3',
       image: 'assets/dolphin3.jpg',
       name: 'Swimming with Wild Dolphins and Whale Watching (Private Transportation Optional)',
       subtitle: 'As From Rs500 per adult',
@@ -50,9 +53,10 @@ class RecommendedPlaces extends StatelessWidget {
       image3: 'assets/dolphin/image13.jpg',
       image4: 'assets/dolphin/image14.jpg',
       image5: 'assets/dolphin/image15.jpg',
-
+      distance: '',
     ),
     TouristPlace(
+      id: '4',
       image: 'assets/dolphin5.jpg',
       name: 'Le Havanah Boat/sunrise watching & swimming Dolpins/Lunch on Benitier Island',
       subtitle: 'As From Rs500 per adult',
@@ -66,12 +70,13 @@ class RecommendedPlaces extends StatelessWidget {
       image3: 'assets/dolphin/image18.jpg',
       image4: 'assets/dolphin/image19.jpg',
       image5: 'assets/dolphin/image20.jpg',
-
+      distance: '',
     ),
 
   ];
   final List<TouristPlace> TouristDetailsPageNature = [
     TouristPlace(
+      id: '5',
       image: 'assets/nature1.jpg',
       name: 'South-West of Mauritius Private Full-Day  Scenic Tour',
       subtitle: 'As From Rs500 per adult',
@@ -85,9 +90,10 @@ class RecommendedPlaces extends StatelessWidget {
       image3: 'assets/Nature/nature3.jpg',
       image4: 'assets/Nature/nature4.jpg',
       image5: 'assets/Nature/nature5.jpg',
-
+      distance: '',
     ),
     TouristPlace(
+      id: '6',
       image: 'assets/nature2.jpg',
       name: 'Enchanting South of Mauritius: Full-day tour  Incl CASELA Park, Lunch & Transfer',
       subtitle: 'As From Rs500 per adult',
@@ -101,9 +107,10 @@ class RecommendedPlaces extends StatelessWidget {
       image3: 'assets/Nature/nature8.jpg',
       image4: 'assets/Nature/nature9.jpg',
       image5: 'assets/Nature/nature10.jpg',
-
+      distance: '',
     ),
     TouristPlace(
+      id: '7',
       image: 'assets/nature3.jpg',
       name: 'Snorkelling with Giant Turtles, The Red Church, Pamplemousses Garden & Port Louis',
       subtitle: 'As From Rs500 per adult',
@@ -117,9 +124,10 @@ class RecommendedPlaces extends StatelessWidget {
       image3: 'assets/Nature/nature13.jpg',
       image4: 'assets/Nature/nature14.jpg',
       image5: 'assets/Nature/nature15.jpg',
-
+      distance: '',
     ),
     TouristPlace(
+      id: '8',
       image: 'assets/nature4.jpg',
       name: 'Casela World of Adventures, West of Mauritius',
       subtitle: 'As From Rs500 per adult',
@@ -133,12 +141,13 @@ class RecommendedPlaces extends StatelessWidget {
       image3: 'assets/Nature/nature18.jpg',
       image4: 'assets/Nature/nature19.jpg',
       image5: 'assets/Nature/nature20.jpg',
-
+      distance: '',
     ),
 
   ];
   final List<TouristPlace> TouristDetailsPageCatamaran = [
     TouristPlace(
+      id: '9',
       image: 'assets/catamaran.jpg',
       name: 'Full-Day Catamaran Cruise to Ile aux Cerfs with BBQ Lunch',
       subtitle: 'As From Rs500 per adult',
@@ -152,9 +161,10 @@ class RecommendedPlaces extends StatelessWidget {
       image3: 'assets/catamaran/catamaran3.jpg',
       image4: 'assets/catamaran/catamaran4.jpg',
       image5: 'assets/catamaran/catamaran5.jpg',
-
+      distance: '',
     ),
     TouristPlace(
+      id: '10',
       image: 'assets/catamaran1.jpg',
       name: 'Ilot Gabriel Catamaran Cruise',
       subtitle: 'As From Rs500 per adult',
@@ -168,9 +178,10 @@ class RecommendedPlaces extends StatelessWidget {
       image3: 'assets/catamaran/catamaran8.jpg',
       image4: 'assets/catamaran/catamaran9.jpg',
       image5: 'assets/catamaran/catamaran10.jpg',
-
+      distance: '',
     ),
     TouristPlace(
+      id: '11',
       image: 'assets/catamaran3.jpg',
       name: 'Private Guided Tour of Northern Mauritius with Shopping in Port Louis',
       subtitle: 'As From Rs500 per adult',
@@ -184,9 +195,10 @@ class RecommendedPlaces extends StatelessWidget {
       image3: 'assets/catamaran/catamaran13.jpg',
       image4: 'assets/catamaran/catamaran14.jpg',
       image5: 'assets/catamaran/catamaran15.jpg',
-
+      distance: '',
     ),
     TouristPlace(
+      id: '12',
       image: 'assets/catamaran4.jpg',
       name: 'Catamaran Cruise to Ile Aux Benitiers: Dolphin watch, Crystal Rock & Transfer',
       subtitle: 'As From Rs500 per adult',
@@ -200,9 +212,10 @@ class RecommendedPlaces extends StatelessWidget {
       image3: 'assets/catamaran/catamaran18.jpg',
       image4: 'assets/catamaran/catamaran19.jpg',
       image5: 'assets/catamaran/catamaran20.jpg',
-
+      distance: '',
     ),
     TouristPlace(
+      id: '13',
       image: 'assets/catamaran5.jpg',
       name: 'Ile aux Aigrettes Nature Reserve, Blue Bay Beach, La Vanille Park & Gris Gris',
       subtitle: 'As From Rs500 per adult',
@@ -216,12 +229,13 @@ class RecommendedPlaces extends StatelessWidget {
       image3: 'assets/catamaran/catamaran23.jpg',
       image4: 'assets/catamaran/catamaran24.jpg',
       image5: 'assets/catamaran/catamaran25.jpg',
-
+      distance: '',
     ),
 
   ];
   final List<TouristPlace> TouristDetailsPageQuad = [
     TouristPlace(
+      id: '14',
       image: 'assets/quad1.jpg',
       name: 'Tailor Made Day Package - La Vallee Des Couleurs',
       subtitle: 'As From Rs500 per adult',
@@ -235,9 +249,10 @@ class RecommendedPlaces extends StatelessWidget {
       image3: 'assets/quad/quad3.jpg',
       image4: 'assets/quad/quad4.jpg',
       image5: 'assets/quad/quad5.jpg',
-
+      distance: '',
     ),
     TouristPlace(
+      id: '15',
       image: 'assets/quad2.jpg',
       name: '4x4 Safari Tours at La Vallee de Ferney - Nature Expedition',
       subtitle: 'As From Rs500 per adult',
@@ -251,9 +266,10 @@ class RecommendedPlaces extends StatelessWidget {
       image3: 'assets/quad/quad8.jpg',
       image4: 'assets/quad/quad9.jpg',
       image5: 'assets/quad/quad10.jpg',
-
+      distance: '',
     ),
     TouristPlace(
+      id: '16',
       image: 'assets/quad3.jpg',
       name: 'Discovery Trail by Safari 4x4 - Bel Ombre Nature Reserve',
       subtitle: 'As From Rs500 per adult',
@@ -267,9 +283,10 @@ class RecommendedPlaces extends StatelessWidget {
       image3: 'assets/quad/quad13.jpg',
       image4: 'assets/quad/quad14.jpg',
       image5: 'assets/quad/quad15.jpg',
-
+      distance: '',
     ),
     TouristPlace(
+      id: '17',
       image: 'assets/quad4.jpg',
       name: '2hr Guided Quad Bike Tour in the East - A Trip Through History',
       subtitle: 'As From Rs500 per adult',
@@ -283,9 +300,10 @@ class RecommendedPlaces extends StatelessWidget {
       image3: 'assets/quad/quad18.jpg',
       image4: 'assets/quad/quad19.jpg',
       image5: 'assets/quad/quad20.jpg',
-
+      distance: '',
     ),
     TouristPlace(
+      id: '18',
       image: 'assets/quad5.jpg',
       name: 'Nature Adventure Package (Quad Biking, Zip Line)',
       subtitle: 'As From Rs500 per adult',
@@ -299,12 +317,13 @@ class RecommendedPlaces extends StatelessWidget {
       image3: 'assets/quad/quad23.jpg',
       image4: 'assets/quad/quad24.jpg',
       image5: 'assets/quad/quad25.jpg',
-
+      distance: '',
     ),
 
   ];
   final List<TouristPlace> TouristDetailsPageHiking = [
     TouristPlace(
+      id: '19',
       image: 'assets/hiking1.jpg',
       name: 'Hiking Le Morne Brabant',
       subtitle: 'As From Rs500 per adult',
@@ -318,9 +337,10 @@ class RecommendedPlaces extends StatelessWidget {
       image3: 'assets/hiking/hiking3.jpg',
       image4: 'assets/hiking/hiking4.jpg',
       image5: 'assets/hiking/hiking5.jpg',
-
+      distance: '',
     ),
     TouristPlace(
+      id: '20',
       image: 'assets/hiking2.jpg',
       name: 'Hiking Sept Cascades (Tamarind Falls)',
       subtitle: 'As From Rs500 per adult',
@@ -334,9 +354,10 @@ class RecommendedPlaces extends StatelessWidget {
       image3: 'assets/hiking/hiking8.jpg',
       image4: 'assets/hiking/hiking9.jpg',
       image5: 'assets/hiking/hiking10.jpg',
-
+      distance: '',
     ),
     TouristPlace(
+      id: '21',
       image: 'assets/hiking3.jpg',
       name: 'Hiking Le Pouce Mountain - 3rd Highest Mountain',
       subtitle: 'As From Rs500 per adult',
@@ -350,9 +371,10 @@ class RecommendedPlaces extends StatelessWidget {
       image3: 'assets/hiking/hiking13.jpg',
       image4: 'assets/hiking/hiking14.jpg',
       image5: 'assets/hiking/hiking15.jpg',
-
+      distance: '',
     ),
     TouristPlace(
+      id: '22',
       image: 'assets/hiking4.jpg',
       name: 'Hiking in the Black River Gorges National Parc - Native Forest',
       subtitle: 'As From Rs500 per adult',
@@ -366,9 +388,10 @@ class RecommendedPlaces extends StatelessWidget {
       image3: 'assets/hiking/hiking18.jpg',
       image4: 'assets/hiking/hiking19.jpg',
       image5: 'assets/hiking/hiking20.jpg',
-
+      distance: '',
     ),
     TouristPlace(
+      id: '23',
       image: 'assets/hiking5.jpg',
       name: 'Hiking - Ebony Forest Reserve Chamarel: Love Tree Tour',
       subtitle: 'As From Rs500 per adult',
@@ -382,12 +405,13 @@ class RecommendedPlaces extends StatelessWidget {
       image3: 'assets/hiking/hiking23.jpg',
       image4: 'assets/hiking/hiking24.jpg',
       image5: 'assets/hiking/hiking25.jpg',
-
+      distance: '',
     ),
 
   ];
   final List<TouristPlace> TouristDetailsPageHistorical = [
     TouristPlace(
+      id: '24',
       image: 'assets/historical1.jpg',
       name: 'Port-Louis Street Food Tour & China Town',
       subtitle: 'As From Rs500 per adult',
@@ -401,9 +425,10 @@ class RecommendedPlaces extends StatelessWidget {
       image3: 'assets/historical/historical3.jpg',
       image4: 'assets/historical/historical4.jpg',
       image5: 'assets/historical/historical5.jpg',
-
+      distance: '',
     ),
     TouristPlace(
+      id: '26',
       image: 'assets/historical2.jpg',
       name: 'Botanical Garden, Sugar Museum, Rum Tasting',
       subtitle: 'As From Rs500 per adult',
@@ -417,9 +442,10 @@ class RecommendedPlaces extends StatelessWidget {
       image3: 'assets/historical/historical8.jpg',
       image4: 'assets/historical/historical9.jpg',
       image5: 'assets/historical/historical10.jpg',
-
+      distance: '',
     ),
     TouristPlace(
+      id: '27',
       image: 'assets/historical3.jpg',
       name: 'Route of Indian Spirituality',
       subtitle: 'As From Rs500 per adult',
@@ -433,9 +459,10 @@ class RecommendedPlaces extends StatelessWidget {
       image3: 'assets/historical/historical13.jpg',
       image4: 'assets/historical/historical14.jpg',
       image5: 'assets/historical/historical15.jpg',
-
+      distance: '',
     ),
     TouristPlace(
+      id: '28',
       image: 'assets/historical4.jpg',
       name: 'Tea & Sugarcane Plantation Colonial Tour',
       subtitle: 'As From Rs500 per adult',
@@ -449,9 +476,10 @@ class RecommendedPlaces extends StatelessWidget {
       image3: 'assets/historical/historical18.jpg',
       image4: 'assets/historical/historical19.jpg',
       image5: 'assets/historical/historical20.jpg',
-
+      distance: '',
     ),
     TouristPlace(
+      id: '29',
       image: 'assets/historical5.jpg',
       name: 'Cultures & Traditions Tour',
       subtitle: 'As From Rs500 per adult',
@@ -465,12 +493,13 @@ class RecommendedPlaces extends StatelessWidget {
       image3: 'assets/historical/historical23.jpg',
       image4: 'assets/historical/historical24.jpg',
       image5: 'assets/historical/historical25.jpg',
-
+      distance: '',
     ),
 
   ];
   final List<TouristPlace> TouristDetailsPageCasino = [
     TouristPlace(
+      id: '30',
       image: 'assets/casino1.jpg',
       name: 'Casino Senator Grand Baie',
       subtitle: 'As From Rs500 per adult',
@@ -484,9 +513,10 @@ class RecommendedPlaces extends StatelessWidget {
       image3: 'assets/casino/casino3.jpg',
       image4: 'assets/casino/casino4.jpg',
       image5: 'assets/casino/casino5.jpg',
-
+      distance: '',
     ),
     TouristPlace(
+      id: '31',
       image: 'assets/casino2.jpg',
       name: 'Ti Vegas',
       subtitle: 'As From Rs500 per adult',
@@ -500,9 +530,10 @@ class RecommendedPlaces extends StatelessWidget {
       image3: 'assets/casino/casino8.jpg',
       image4: 'assets/casino/casino9.jpg',
       image5: 'assets/casino/casino10.jpg',
-
+      distance: '',
     ),
     TouristPlace(
+      id: '32',
       image: 'assets/casino3.jpg',
       name: 'Casino Senator Port Louis',
       subtitle: 'As From Rs500 per adult',
@@ -516,11 +547,12 @@ class RecommendedPlaces extends StatelessWidget {
       image3: 'assets/casino/casino13.jpg',
       image4: 'assets/casino/casino14.jpg',
       image5: 'assets/casino/casino15.jpg',
-
+      distance: '',
     ),
   ];
   final List<TouristPlace> TouristDetailsPageWaterfall = [
     TouristPlace(
+      id: '33',
       image: 'assets/cascade.jpg',
       name: 'Les 7 Cascades',
       subtitle: 'As From Rs500 per adult',
@@ -534,9 +566,10 @@ class RecommendedPlaces extends StatelessWidget {
       image3: 'assets/waterfalls/waterfall3.jpg',
       image4: 'assets/waterfalls/waterfall4.jpg',
       image5: 'assets/waterfalls/waterfall5.jpg',
-
+      distance: '',
     ),
     TouristPlace(
+      id: '34',
       image: 'assets/cascade1.jpg',
       name: 'Chamarel Waterfalls',
       subtitle: 'As From Rs500 per adult',
@@ -550,9 +583,10 @@ class RecommendedPlaces extends StatelessWidget {
       image3: 'assets/waterfalls/waterfall8.jpg',
       image4: 'assets/waterfalls/waterfall9.jpg',
       image5: 'assets/waterfalls/waterfall10.jpg',
-
+      distance: '',
     ),
     TouristPlace(
+      id: '35',
       image: 'assets/cascade2.jpg',
       name: 'Rochester Falls',
       subtitle: 'As From Rs500 per adult',
@@ -566,9 +600,10 @@ class RecommendedPlaces extends StatelessWidget {
       image3: 'assets/waterfalls/waterfall13.jpg',
       image4: 'assets/waterfalls/waterfall14.jpg',
       image5: 'assets/waterfalls/waterfall15.jpg',
-
+      distance: '',
     ),
     TouristPlace(
+      id: '36',
       image: 'assets/cascade3.jpg',
       name: 'Alexandra Falls',
       subtitle: 'As From Rs500 per adult',
@@ -582,9 +617,10 @@ class RecommendedPlaces extends StatelessWidget {
       image3: 'assets/waterfalls/waterfall18.jpg',
       image4: 'assets/waterfalls/waterfall19.jpg',
       image5: 'assets/waterfalls/waterfall20.jpg',
-
+      distance: '',
     ),
     TouristPlace(
+      id: '37',
       image: 'assets/cascade4.jpg',
       name: 'Cascade De 500 Pieds',
       subtitle: 'As From Rs500 per adult',
@@ -598,7 +634,7 @@ class RecommendedPlaces extends StatelessWidget {
       image3: 'assets/waterfalls/waterfall23.jpg',
       image4: 'assets/waterfalls/waterfall24.jpg',
       image5: 'assets/waterfalls/waterfall25.jpg',
-
+      distance: '',
     ),
   ];
 
