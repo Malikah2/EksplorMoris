@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:example/widgets/custom_icon_button.dart';
 import '../models/nearby_places_model.dart';
-import 'hotlines.dart';
+import 'hotline/hotlines.dart';
 
 class FavoritesPage extends StatefulWidget {
   @override

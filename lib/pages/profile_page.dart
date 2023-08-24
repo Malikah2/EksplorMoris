@@ -6,7 +6,7 @@ import 'package:example/pages/other_page.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:example/widgets/custom_icon_button.dart';
 import 'package:flutter/material.dart';
-import 'hotline/hotlines.dart';
+
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
