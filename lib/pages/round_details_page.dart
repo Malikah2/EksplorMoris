@@ -8,13 +8,21 @@ import 'favorites.dart';
 
 Favorites favorites = Favorites();
 
-class roundDetailsPage extends StatelessWidget {
+class roundDetailsPage extends StatefulWidget {
   final List<TouristPlace> placeList;
-  final List<TouristPlace> favoritesPlaces = [];
-  late IconData currentIcon = Icons.favorite_border;
-  bool saved = false;
 
    roundDetailsPage({Key? key, required this.placeList}) : super(key: key);
+
+  @override
+  State<roundDetailsPage> createState() => _roundDetailsPageState();
+}
+
+class _roundDetailsPageState extends State<roundDetailsPage> {
+  final List<TouristPlace> favoritesPlaces = [];
+
+  late IconData currentIcon = Icons.favorite_border;
+
+  bool saved = false;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +35,7 @@ class roundDetailsPage extends StatelessWidget {
             sliver: SliverList(
               delegate: SliverChildBuilderDelegate(
                     (context, index) {
-                  final place = placeList[index];
+                  final place = widget.placeList[index];
                   return GestureDetector(
                     onTap: () {
                       Navigator.push(
@@ -79,14 +87,18 @@ class roundDetailsPage extends StatelessWidget {
                                           duration: Duration(seconds: 1),
                                         ),
                                       );
-                                      saved = !saved;
-                                      currentIcon =  saved
-                                          ? Icons.favorite
-                                          : Icons.favorite_border;
+                                      setState(() {
+                                        saved = !saved;
+                                        currentIcon =  saved
+                                            ? Icons.favorite
+                                            : Icons.favorite_border;
+                                      });
                                     },
                                     icon: Icon(
-                                      currentIcon,
-                                      color: Colors.white,
+                                      currentIcon = favorites.isFavorite(place)
+                                          ? Icons.favorite
+                                          : Icons.favorite_border,
+                                      color: favorites.isFavorite(place) ? Colors.red : Colors.black,
                                       size: 24,
                                     ),
                                   ),
@@ -156,7 +168,7 @@ class roundDetailsPage extends StatelessWidget {
                     ),
                   );
                 },
-                childCount: placeList.length,
+                childCount: widget.placeList.length,
               ),
             ),
           ),

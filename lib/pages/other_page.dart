@@ -14,120 +14,153 @@ import 'pharmacy_otherpage/pharmacies_otherpage.dart';
 import 'banks_otherpage/banks_otherpage.dart';
 import 'banks_viewall/banks_viewall.dart';
 
-
-class OtherPage extends StatelessWidget{
-  const OtherPage({Key? key}) : super(key:key);
+class OtherPage extends StatelessWidget {
+  const OtherPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
-    return Scaffold(
-
-      appBar:AppBar(
-
-          elevation: 0,
-          backgroundColor: Colors.transparent,
-          foregroundColor: Colors.black,
-
-          title: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children:  [
-              const Text("Good Morning"),
-              Text("Banon",
-                style: Theme.of(context).textTheme.labelMedium,
-              ),
-            ],
-          ),
-
-          actions: const [
-            CustomIconButton(
-              icon: Icon(Ionicons.search_outline),
+    return WillPopScope(
+      onWillPop: () async {
+        // Show a dialog to confirm leaving the app
+        bool? shouldLeave = await showExitConfirmationDialog(context);
+        return shouldLeave ?? false;
+      },
+      child: Scaffold(
+        appBar: AppBar(
+            elevation: 0,
+            backgroundColor: Colors.transparent,
+            foregroundColor: Colors.black,
+            title: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text("Good Morning"),
+                Text(
+                  "Banon",
+                  style: Theme.of(context).textTheme.labelMedium,
+                ),
+              ],
             ),
-            Padding(
-              padding: EdgeInsets.only(left: 8.0, right: 12),
-              child: CustomIconButton(
-                icon: Icon(Ionicons.notifications_outline),
+            actions: const [
+              CustomIconButton(
+                icon: Icon(Ionicons.search_outline),
               ),
-            ),
-          ]
-
-      ),
-
-
-      body: ListView(
-        physics: const BouncingScrollPhysics(),
-        padding: const EdgeInsets.all(14),
-        children:  [
+              Padding(
+                padding: EdgeInsets.only(left: 8.0, right: 12),
+                child: CustomIconButton(
+                  icon: Icon(Ionicons.notifications_outline),
+                ),
+              ),
+            ]),
+        body: ListView(
+          physics: const BouncingScrollPhysics(),
+          padding: const EdgeInsets.all(14),
+          children: [
             Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("Hotlines", style: Theme.of(context).textTheme.headline6,
-                  ),
-                  //TextButton(onPressed: (){}, child: Text("View All")),
-                ],
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Hotlines",
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                //TextButton(onPressed: (){}, child: Text("View All")),
+              ],
             ),
-
-          const SizedBox(height:10),
-          const Hotlines(),
-          const SizedBox(height:10),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("Hospitals & Clinics", style: Theme.of(context).textTheme.headline6,
-              ),
-              TextButton(onPressed: (){
-                Navigator.pushReplacement(
-                  context, MaterialPageRoute(
-                    builder: (context)=> const AllHospitals(),
-                  ),
-                );
-              },
-              child: Text("View All")),
-            ],
-          ),
-          const SizedBox(height:10),
-          const Hospitals(),
-          const SizedBox(height:10),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("Pharmacy", style: Theme.of(context).textTheme.headline6,
-              ),
-              TextButton(onPressed: (){
-                Navigator.pushReplacement(
-                  context, MaterialPageRoute(
-                  builder: (context)=> const AllPharmacies(),
+            const SizedBox(height: 10),
+            const Hotlines(),
+            const SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Hospitals & Clinics",
+                  style: Theme.of(context).textTheme.headline6,
                 ),
-                );
-              },
-                  child: Text("View All")),
-            ],
-          ),
-          const SizedBox(height:10),
-          const Pharmacy(),
-          const SizedBox(height:10),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("Banks", style: Theme.of(context).textTheme.headline6,
-              ),
-              TextButton(onPressed: (){
-                Navigator.pushReplacement(
-                  context, MaterialPageRoute(
-                  builder: (context)=> const AllBanks(),
+                TextButton(
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const AllHospitals(),
+                        ),
+                      );
+                    },
+                    child: Text("View All")),
+              ],
+            ),
+            const SizedBox(height: 10),
+            const Hospitals(),
+            const SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Pharmacy",
+                  style: Theme.of(context).textTheme.headline6,
                 ),
-                );
-              },
-                  child: Text("View All")),
-            ],
-          ),
-          const SizedBox(height:10),
-          const Bank(),
-        ],
-
+                TextButton(
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const AllPharmacies(),
+                        ),
+                      );
+                    },
+                    child: Text("View All")),
+              ],
+            ),
+            const SizedBox(height: 10),
+            const Pharmacy(),
+            const SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Banks",
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                TextButton(
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const AllBanks(),
+                        ),
+                      );
+                    },
+                    child: Text("View All")),
+              ],
+            ),
+            const SizedBox(height: 10),
+            const Bank(),
+          ],
+        ),
       ),
-
+    );
+  }
+  Future<bool?> showExitConfirmationDialog(BuildContext context) async {
+    return showDialog<bool>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Warning'),
+          content: Text('Do you really want to exit the app?'),
+          actions: <Widget>[
+            TextButton(
+              child: Text('Yes'),
+              onPressed: () {
+                Navigator.of(context).pop(true); //Allow exit
+              },
+            ),
+            TextButton(
+              child: Text('No'),
+              onPressed: () {
+                Navigator.of(context).pop(false); //stay in app
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }
-

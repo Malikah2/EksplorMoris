@@ -7,6 +7,7 @@ import '../pages/round_details_page.dart';
 class TouristPlaces extends StatelessWidget {
   TouristPlaces({Key? key}) : super(key: key);
 
+
   final List<TouristPlace> beachDetails = [
     TouristPlace(
       id: '38',

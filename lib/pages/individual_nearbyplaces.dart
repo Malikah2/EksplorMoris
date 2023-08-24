@@ -51,7 +51,9 @@ class _IndividualNearbyplacePageState extends State<IndividualNearbyplacePage> {
                       favoritesPlaces.contains(widget.nearbyPlace)
                       ? Icons.favorite
                       : Icons.favorite_border,
-                      color: Colors.white,
+                      color: favoritesPlaces.contains(widget.nearbyPlace)
+                      ? Colors.red
+                      : Colors.black,
                       size: 24,
                     ),
                   ),

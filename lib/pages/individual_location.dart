@@ -22,7 +22,7 @@ class IndividualLocationPage extends StatefulWidget {
 
 class _IndividualLocationPageState extends State<IndividualLocationPage> {
   bool isDescriptionExpanded = false;
-  final List<TouristPlace> favoritesPlaces = [];
+  // final List<TouristPlace> favoritesPlaces = [];
   late IconData currentIcon = Icons.favorite_border;
   bool saved = false;
 
@@ -58,13 +58,18 @@ class _IndividualLocationPageState extends State<IndividualLocationPage> {
                     duration: Duration(seconds: 1),
                   ),
                 );
-                saved = !saved;
-                currentIcon = saved
-                    ? Icons.favorite
-                    : Icons.favorite_border;
+                setState(() {
+                  saved = !saved;
+                  currentIcon = saved
+                      ? Icons.favorite
+                      : Icons.favorite_border;
+                });
+
               },
               icon: Icon(
-                currentIcon,
+                currentIcon = favorites.isFavorite(widget.roundplace)
+                    ? Icons.favorite
+                    : Icons.favorite_border,
                 color: Colors.white,
                 size: 24,
               ),

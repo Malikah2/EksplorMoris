@@ -7,6 +7,7 @@ import 'favorites.dart';
 import 'favorites_page.dart';
 import 'individual_place.dart';
 
+
 class TouristPlace {
   final String id;
   final String image;
@@ -45,13 +46,21 @@ class TouristPlace {
 
 Favorites favorites = Favorites();
 
-class TouristDetailsPage extends StatelessWidget {
+class TouristDetailsPage extends StatefulWidget {
   final List<TouristPlace> places;
-  final List<TouristPlace> favoritesPlaces = [];
-late IconData currentIcon = Icons.favorite_border;
-bool saved = false;
 
   TouristDetailsPage({Key? key, required this.places}) : super(key: key);
+
+  @override
+  State<TouristDetailsPage> createState() => _TouristDetailsPageState();
+}
+
+class _TouristDetailsPageState extends State<TouristDetailsPage> {
+  final List<TouristPlace> favoritesPlaces = [];
+
+late IconData currentIcon = Icons.favorite_border;
+
+bool saved = false;
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +75,7 @@ bool saved = false;
             sliver: SliverList(
               delegate: SliverChildBuilderDelegate(
                 (context, index) {
-                  final place = places[index];
+                  final place = widget.places[index];
                   return GestureDetector(
                     // Wrap with GestureDetector
                     onTap: () {
@@ -119,14 +128,20 @@ bool saved = false;
                                       duration: Duration(seconds: 1),
                                       ),
                                       );
-                                     saved = !saved;
-                                     currentIcon =  saved
-                                      ? Icons.favorite
-                                         : Icons.favorite_border;
+                                      setState(() {
+                                        saved = !saved;
+                                        currentIcon =  saved
+                                            ? Icons.favorite
+                                            : Icons.favorite_border;
+
+                                      });
+
                                     },
                                     icon: Icon(
-                                     currentIcon,
-                                      color: Colors.white,
+                                      currentIcon =  favorites.isFavorite(place)
+                                          ? Icons.favorite
+                                          : Icons.favorite_border,
+                                      color: favorites.isFavorite(place) ? Colors.red : Colors.black,
                                       size: 24,
                                     ),
                                   ),
@@ -195,7 +210,7 @@ bool saved = false;
                     ),
                   );
                 },
-                childCount: places.length,
+                childCount: widget.places.length,
               ),
             ),
           ),
@@ -225,12 +240,4 @@ bool saved = false;
       ),
     );
   }
-
-  // void toggleFavorite(TouristPlace place) {
-  //   if (favoritesPlaces.contains(place)) {
-  //     favoritesPlaces.remove(place);
-  //   } else {
-  //     favoritesPlaces.add(place);
-  //   }
-  // }
 }
