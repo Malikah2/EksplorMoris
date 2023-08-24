@@ -21,16 +21,16 @@ class WelcomePage extends StatelessWidget {
                 ),
                 const SizedBox(height: 40),
                 Text(
-                  "Start your journey \n only with us",
+                  "Your gateway to discovering the \n breathtaking beauty of Mauritius is here!",
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 26,
+                    fontSize: 22,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 const SizedBox(height: 20),
                 const Text(
-                  "All your vacations destinations are here,\nenjoy your holiday",
+                  "Embark on a journey to explore the hidden gems and iconic landmarks that make Mauritius a tropical paradise like no other.",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.black54,

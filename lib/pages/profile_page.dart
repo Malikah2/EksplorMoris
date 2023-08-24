@@ -1,6 +1,9 @@
 import 'package:example/pages/home_page.dart';
+import 'package:example/pages/profiledetails_page.dart';
 import 'package:example/pages/settings_page.dart';
+import 'package:example/pages/welcome_page.dart.dart';
 import 'package:flutter/material.dart';
+import 'applicationguide_page.dart';
 import 'home_page.dart';
 import 'home_widget.dart';
 import 'package:example/pages/other_page.dart';
@@ -63,6 +66,16 @@ class ProfilePage extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: () {
                     // Handle "View your profile details" button press here
+                 Navigator.push(
+                   context,
+                   MaterialPageRoute(
+                       builder: (context) => ProfileDetailsPage(
+                         username: "Malikah",
+                         email: "malikah@gmail.com",
+                         profileImage: "assets/lavanille.jpg",
+                       ),
+                   ),
+                 );
                   },
                   style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.all(20),
@@ -137,6 +150,10 @@ class ProfilePage extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: () {
                     // Handle "Application Guide" button press here
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ApplicationGuidePage()),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.all(20),
@@ -172,6 +189,9 @@ class ProfilePage extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: () {
                     // Handle "Log Out" button press here
+                    Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => WelcomePage()) ,
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.all(20),
