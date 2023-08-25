@@ -40,7 +40,7 @@ class _HomeState extends State{
             label: "Home"
           ),
           BottomNavigationBarItem(
-          icon: Icon(Ionicons.bookmark_outline, size: 24.0,color: Colors.blue,),
+          icon: Icon(Ionicons.warning_outline, size: 24.0,color: Colors.blue,),
           label: "Emergencies",
           ),
           BottomNavigationBarItem(

@@ -32,7 +32,7 @@ class ProfilePage extends StatelessWidget {
         body: Center(
           child: ListView(
             physics: const BouncingScrollPhysics(),
-            padding: const EdgeInsets.all(14),
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 0),
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -73,6 +73,8 @@ class ProfilePage extends StatelessWidget {
                          username: "Malikah",
                          email: "malikah@gmail.com",
                          profileImage: "assets/lavanille.jpg",
+                         phoneNumber: "+230 58127465",
+                         dateOfBirth: "01/01/2002",
                        ),
                    ),
                  );

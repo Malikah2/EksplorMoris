@@ -20,6 +20,8 @@ class SettingsPage extends StatefulWidget {
 
 class _SettingsPageState extends State<SettingsPage> {
   bool _isDarkModeEnabled = false;
+  bool _isLocationEnabled = false;
+  String _selectedLanguage = 'English';
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +42,7 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
             ),
             SwitchListTile(
-              title: Text("Dark Mode"),
+              title: Text("Light Mode"),
               value: _isDarkModeEnabled,
               onChanged: (value) {
                 setState(() {
@@ -50,7 +52,31 @@ class _SettingsPageState extends State<SettingsPage> {
                 });
               },
             ),
-            SizedBox(height: 30,),
+            SizedBox(
+              height: 10,
+            ),
+            Text(
+              "Location Preference",
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SwitchListTile(
+              title: Text("Enable Location"),
+              value: _isLocationEnabled,
+              onChanged: (value) {
+                setState(() {
+                  _isLocationEnabled = value;
+                  // Apply location preference changes here
+                  // You can call a function to handle location preference change
+                  _changeLocationPreference();
+                });
+              },
+            ),
+            SizedBox(
+              height: 10,
+            ),
             Text(
               "Language Preference",
               style: TextStyle(
@@ -58,82 +84,74 @@ class _SettingsPageState extends State<SettingsPage> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 20,),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-              child: ElevatedButton(
-                onPressed: () {
-                  // Handle "Settings" button press here
-                },
-                style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.all(20),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-                  primary: Colors.white,
-                  minimumSize: Size(250, 0),
+            SizedBox(
+              height: 20,
+            ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.grey,
+                    width: 1.0,
+                  ),
+                  borderRadius: BorderRadius.circular(5.0),
                 ),
-                child: Row(
-                  children: [
-                    Text(
-                      "English",
-                      style: TextStyle(
-                        color: Colors.lightBlueAccent,
-                        fontSize: 18,
-                      ),
-                    ),
-                  ],
+                child: DropdownButton<String>(
+                  value: _selectedLanguage,
+                  onChanged: (newValue) {
+                    setState(() {
+                      _selectedLanguage = newValue!;
+                      //Apply language preference changes here
+                      _changeLanguagePreference(newValue);
+                    });
+                  },
+                  items: <String>['English', 'French', 'Spanish', 'Germany']
+                      .map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-              child: ElevatedButton(
-                onPressed: () {
-                  // Handle "Settings" button press here
-                },
-                style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.all(20),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-                  primary: Colors.white,
-                  minimumSize: Size(250, 0),
-                ),
-                child: Row(
-                  children: [
-                    Text(
-                      "French",
-                      style: TextStyle(
-                        color: Colors.lightBlueAccent,
-                        fontSize: 18,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+            SizedBox(
+              height: 30,
             ),
-            SizedBox(height: 30,),
             Text(
-              "System ",
+              "System Updates",
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 20,),
+            SizedBox(
+              height: 20,
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
               child: ElevatedButton(
                 onPressed: () {
-                  // Handle "Settings" button press here
+                  // Show a snackbar indicating that the system is up to date
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text("System is up to date!"),
+                      duration: Duration(seconds: 2), // Duration for how long the snackbar is visible
+                    ),
+                  );
                 },
                 style: ElevatedButton.styleFrom(
                   padding: EdgeInsets.all(20),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15)),
                   primary: Colors.white,
                   minimumSize: Size(250, 0),
                 ),
                 child: Row(
                   children: [
                     Text(
-                      "System is up to date",
+                      "Check for updates",
                       style: TextStyle(
                         color: Colors.lightBlueAccent,
                         fontSize: 18,
@@ -142,6 +160,9 @@ class _SettingsPageState extends State<SettingsPage> {
                   ],
                 ),
               ),
+            ),
+            SizedBox(
+              height: 10,
             ),
           ],
         ),
@@ -161,5 +182,23 @@ class _SettingsPageState extends State<SettingsPage> {
     }
   }
 
+//Function to handle location preference change
+  void _changeLocationPreference() {
+    if (_isLocationEnabled) {
+      // Enable location-based features
+      // Perform necessary actions here
+      print("Location preference enabled");
+    } else {
+      // Disable location-based features
+      // Perform necessary actions here
+      print("Location preference disabled");
+    }
+  }
 
+//Function to handle language preference change
+  void _changeLanguagePreference(String selectedLanguage) {
+    // Perform actions based on the selected language
+    print("Language preference changed to: $selectedLanguage");
+    // You can implement language change logic here
+  }
 }
