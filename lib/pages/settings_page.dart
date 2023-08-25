@@ -35,7 +35,7 @@ class _SettingsPageState extends State<SettingsPage> {
             Text(
               "Theme",
               style: TextStyle(
-                fontSize: 18,
+                fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -49,6 +49,99 @@ class _SettingsPageState extends State<SettingsPage> {
                   _changeTheme();
                 });
               },
+            ),
+            SizedBox(height: 30,),
+            Text(
+              "Language Preference",
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 20,),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+              child: ElevatedButton(
+                onPressed: () {
+                  // Handle "Settings" button press here
+                },
+                style: ElevatedButton.styleFrom(
+                  padding: EdgeInsets.all(20),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                  primary: Colors.white,
+                  minimumSize: Size(250, 0),
+                ),
+                child: Row(
+                  children: [
+                    Text(
+                      "English",
+                      style: TextStyle(
+                        color: Colors.lightBlueAccent,
+                        fontSize: 18,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+              child: ElevatedButton(
+                onPressed: () {
+                  // Handle "Settings" button press here
+                },
+                style: ElevatedButton.styleFrom(
+                  padding: EdgeInsets.all(20),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                  primary: Colors.white,
+                  minimumSize: Size(250, 0),
+                ),
+                child: Row(
+                  children: [
+                    Text(
+                      "French",
+                      style: TextStyle(
+                        color: Colors.lightBlueAccent,
+                        fontSize: 18,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(height: 30,),
+            Text(
+              "System ",
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 20,),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+              child: ElevatedButton(
+                onPressed: () {
+                  // Handle "Settings" button press here
+                },
+                style: ElevatedButton.styleFrom(
+                  padding: EdgeInsets.all(20),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                  primary: Colors.white,
+                  minimumSize: Size(250, 0),
+                ),
+                child: Row(
+                  children: [
+                    Text(
+                      "System is up to date",
+                      style: TextStyle(
+                        color: Colors.lightBlueAccent,
+                        fontSize: 18,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
           ],
         ),
