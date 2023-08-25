@@ -17,8 +17,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   TextEditingController _searchController = TextEditingController();
-  bool _isSearchBarVisible = false;
-  bool _isSearchEmpty = false;
   bool noMatchFound = false;
   List<TouristPlace> searchResults = [];
   bool isSearchBarFocused = false;
@@ -73,13 +71,6 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
           actions: [
-            // IconButton(
-            //     icon: Icon(Ionicons.search_outline),
-            //     onPressed: () {
-            //       setState(() {
-            //         _isSearchBarVisible = !_isSearchBarVisible;
-            //       });
-            //     }),
             Padding(
               padding: EdgeInsets.only(left: 8.0, right: 12),
               child: IconButton(
@@ -95,76 +86,6 @@ class _HomePageState extends State<HomePage> {
           physics: BouncingScrollPhysics(),
           padding: const EdgeInsets.all(14),
           children: [
-            //SearchBar
-            // Visibility(
-            //   visible: _isSearchBarVisible,
-            //   child: Padding(
-            //     padding:
-            //     const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-            //     child: TextFormField(
-            //       controller: _searchController,
-            //       onChanged: (value) {
-            //         setState(() {
-            //           filteredPlaces = _filterPlaces(value);
-            //         });
-            //       },
-            //       decoration: InputDecoration(
-            //         hintText: "Search...",
-            //         prefixIcon: Icon(Icons.search),
-            //         border: OutlineInputBorder(),
-            //       ),
-            //     ),
-            //   ),
-            // ),
-            // Visibility(
-            //   visible: _isSearchBarVisible,
-            //   child: Padding(
-            //     padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-            //     child: Row(
-            //       children: [
-            //         Expanded(
-            //           child: TextFormField(
-            //             controller: _searchController,
-            //             onChanged: (value) {
-            //               setState(() {
-            //                 filteredPlaces = _filterPlaces(value);
-            //                 _isSearchEmpty = value.isEmpty;
-            //               });
-            //             },
-            //             decoration: InputDecoration(
-            //               hintText: "Search...",
-            //               prefixIcon: Icon(Icons.search),
-            //               border: OutlineInputBorder(),
-            //             ),
-            //           ),
-            //         ),
-            //         if (!_isSearchEmpty)
-            //           IconButton(
-            //             icon: Icon(Icons.close),
-            //             onPressed: () {
-            //               setState(() {
-            //                 _searchController.clear();
-            //                 // filteredPlaces = allPlaces; // Reset to show all places
-            //                  _isSearchEmpty = true;
-            //               });
-            //             },
-            //           ),
-            //       ],
-            //     ),
-            //   ),
-            // ),
-
-            // Display filtered places
-            // ListView.builder(
-            //     shrinkWrap: true,
-            //     itemCount: filteredPlaces.length,
-            //     itemBuilder: (context, index) {
-            //       return ListTile(
-            //         title: Text(filteredPlaces[index].name),
-            //       );
-            //     }
-            // ),
-
             buildSearchBar(),
             AnimatedContainer(
               duration: Duration(milliseconds: 300),
@@ -317,7 +238,7 @@ class _HomePageState extends State<HomePage> {
       controller: _searchController,
       onChanged: filterRecipes,
       decoration: InputDecoration(
-        hintText: 'Search recipes',
+        hintText: 'Search places',
         prefixIcon: Icon(
           Icons.search,
           color: Colors.blue,
