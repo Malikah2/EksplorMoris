@@ -2,11 +2,10 @@
 import 'dart:ui';
 
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:example/models/nearby_places_model.dart';
 import 'package:example/pages/tourist_details_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:example/pages/favorites_page.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 
 class IndividualNearbyplacePage extends StatefulWidget {
   final TouristPlace nearbyPlace;
@@ -20,6 +19,12 @@ class IndividualNearbyplacePage extends StatefulWidget {
 class _IndividualNearbyplacePageState extends State<IndividualNearbyplacePage> {
   bool isDescriptionExpanded = false;
   List<TouristPlace> favoritesPlaces = [];
+  FlutterTts flutterTts = FlutterTts();
+
+  Future<void> speakText(String text) async {
+    await flutterTts.setLanguage("en-US");
+    await flutterTts.speak(text);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -74,6 +79,7 @@ class _IndividualNearbyplacePageState extends State<IndividualNearbyplacePage> {
       padding: const EdgeInsets.all(20.0),
       child: InkWell(
         onTap: () {
+          speakText("Go back");
           Navigator.pop(context);
         },
         child: Container(
@@ -149,16 +155,6 @@ class _IndividualNearbyplacePageState extends State<IndividualNearbyplacePage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    // Row(
-                    //   children: [
-                    //     CircleAvatar(
-                    //       radius: 25,
-                    //       child: Icon(Icons.attach_money, color: Colors.white,),
-                    //     ),
-                    //     const SizedBox(width: 8,),
-                    //     Text(widget.roundplace.price),
-                    //   ],
-                    // ),
                     const SizedBox(width: 12,),
                     Row(
                       children: [
@@ -187,13 +183,18 @@ class _IndividualNearbyplacePageState extends State<IndividualNearbyplacePage> {
                   padding: EdgeInsets.symmetric(vertical: 10),
                   child: Divider(height: 5,),
                 ),
-                Text(
-                  "Description",
-                  style: TextStyle(
-                    fontSize: 19,
-                    fontWeight: FontWeight.bold,
+                GestureDetector(
+                  onTap: () {
+                    speakText("Description");
+                  },
+                  child: Text(
+                    "Description",
+                    style: TextStyle(
+                      fontSize: 19,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                  textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 15,),
                 GestureDetector(
@@ -201,6 +202,13 @@ class _IndividualNearbyplacePageState extends State<IndividualNearbyplacePage> {
                     setState(() {
                       isDescriptionExpanded = !isDescriptionExpanded;
                     });
+                    speakText(isDescriptionExpanded
+                        ? widget.nearbyPlace.description
+                        : (widget.nearbyPlace.description.length > 100
+                        ? widget.nearbyPlace.description.substring(0, 100) +
+                        "... Read More"
+                        : widget.nearbyPlace.description));
+
                   },
                   child: Text(
                     isDescriptionExpanded

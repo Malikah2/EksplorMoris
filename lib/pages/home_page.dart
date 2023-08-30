@@ -7,6 +7,7 @@ import 'package:example/widgets/recommended_places.dart';
 import 'package:example/widgets/tourist_places.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -23,7 +24,12 @@ class _HomePageState extends State<HomePage> {
   final FocusNode _searchFocusNode = FocusNode();
   List<TouristPlace> allPlaces = RecommendedPlaces().combineAllPlaces();
 
-  // List<TouristPlace> filteredPlaces = [];
+  FlutterTts flutterTts = FlutterTts();
+
+  Future<void> speakText(String text) async {
+    await flutterTts.setLanguage("en-US");
+    await flutterTts.speak(text);
+  }
 
   void _onSearchBarFocusChange() {
     setState(() {
@@ -40,6 +46,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void dispose() {
     _searchFocusNode.dispose();
+    flutterTts.stop();
     super.dispose();
   }
 
@@ -63,21 +70,29 @@ class _HomePageState extends State<HomePage> {
           title: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text("Good Morning"),
-              Text(
-                "Malikah",
-                style: Theme.of(context).textTheme.labelMedium,
+              GestureDetector(
+                onTap: () {
+                  speakText("Good Morning Malikah");
+                },
+                child:  Text("Good Morning\nMalikah", style: Theme.of(context).textTheme.labelMedium),
               ),
+
             ],
           ),
           actions: [
-            Padding(
-              padding: EdgeInsets.only(left: 8.0, right: 12),
-              child: IconButton(
-                onPressed: () {
-                  AuthenticationRepository.instance.logout();
-                },
-                icon: Icon(Ionicons.arrow_back_circle_outline),
+            GestureDetector(
+              onTap: () {
+                speakText("Back");
+                AuthenticationRepository.instance.logout();
+              },
+              child: Padding(
+                padding: EdgeInsets.only(left: 8.0, right: 12),
+                child: IconButton(
+                  onPressed: () {
+                    AuthenticationRepository.instance.logout();
+                  },
+                  icon: Icon(Ionicons.arrow_back_circle_outline),
+                ),
               ),
             ),
           ],
@@ -109,11 +124,15 @@ class _HomePageState extends State<HomePage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  "Recommendation",
-                  style: Theme.of(context).textTheme.headline6,
+                GestureDetector(
+                  onTap: () {
+                    speakText("Recommendations");
+                  },
+                  child: Text(
+                    "Recommendation",
+                    style: Theme.of(context).textTheme.headline6,
+                  ),
                 ),
-                //TextButton(onPressed: (){}, child: Text("View All")),
               ],
             ),
             //recommendation
@@ -127,9 +146,14 @@ class _HomePageState extends State<HomePage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  "Nearby From You",
-                  style: Theme.of(context).textTheme.headline6,
+                GestureDetector(
+                  onTap: () {
+                    speakText("Nearby From You");
+                  },
+                  child: Text(
+                    "Nearby From You",
+                    style: Theme.of(context).textTheme.headline6,
+                  ),
                 ),
                 //TextButton(onPressed: (){}, child: const Text("View All"),)
               ],
@@ -170,6 +194,7 @@ class _HomePageState extends State<HomePage> {
           final place = searchResults[index];
           return GestureDetector(
             onTap: () {
+              speakText(place.name);
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -193,7 +218,11 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
               child: ListTile(
-                title: Text(place.name),
+                title: GestureDetector(
+                  onTap: () {
+                    speakText(place.name);
+                  },
+                    child: Text(place.name)),
                 leading: Container(
                   width: 50,
                   height: 50,
@@ -210,7 +239,9 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 // Add additional fields as needed
+
               ),
+
             ),
           );
         },
@@ -279,15 +310,6 @@ class _HomePageState extends State<HomePage> {
       },
     );
   }
-
-  // List<TouristPlace> _filterPlaces(String searchQuery) {
-  //   searchQuery = searchQuery.toLowerCase();
-  //   return allPlaces.where((place) {
-  //     return place.name.toLowerCase().contains(searchQuery);
-  //     //add conditions for filtering
-  //   }
-  //   ).toList();
-  // }
 
   Future<bool?> showExitConfirmationDialog(BuildContext context) async {
     return showDialog<bool>(

@@ -1,21 +1,22 @@
-import 'package:example/pages/home_page.dart';
 import 'package:example/pages/pharmacy_viewall/pharmacies_viewall.dart';
 import 'package:flutter/material.dart';
-import 'home_page.dart';
-import 'home_widget.dart';
-import 'package:example/pages/other_page.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:example/widgets/custom_icon_button.dart';
-import 'package:flutter/material.dart';
 import 'hospital_otherpage/hospitals_otherpage.dart';
 import 'hotline/hotlines.dart';
 import 'hospital_viewall/hospitals_viewall.dart';
 import 'pharmacy_otherpage/pharmacies_otherpage.dart';
 import 'banks_otherpage/banks_otherpage.dart';
 import 'banks_viewall/banks_viewall.dart';
-
+import 'package:flutter_tts/flutter_tts.dart';
 class OtherPage extends StatelessWidget {
-  const OtherPage({Key? key}) : super(key: key);
+   OtherPage({Key? key}) : super(key: key);
+  FlutterTts flutterTts = FlutterTts();
+
+  Future<void> speakText(String text) async {
+    await flutterTts.setLanguage("en-US");
+    await flutterTts.speak(text);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,42 +26,26 @@ class OtherPage extends StatelessWidget {
         bool? shouldLeave = await showExitConfirmationDialog(context);
         return shouldLeave ?? false;
       },
+
       child: Scaffold(
-        appBar: AppBar(
-            elevation: 0,
-            backgroundColor: Colors.transparent,
-            foregroundColor: Colors.black,
-            title: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text("Good Morning"),
-                Text(
-                  "Banon",
-                  style: Theme.of(context).textTheme.labelMedium,
-                ),
-              ],
-            ),
-            actions: const [
-              CustomIconButton(
-                icon: Icon(Ionicons.search_outline),
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: 8.0, right: 12),
-                child: CustomIconButton(
-                  icon: Icon(Ionicons.notifications_outline),
-                ),
-              ),
-            ]),
+
         body: ListView(
+
           physics: const BouncingScrollPhysics(),
           padding: const EdgeInsets.all(14),
           children: [
+            SizedBox(height: 30,),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  "Hotlines",
-                  style: Theme.of(context).textTheme.headline6,
+                GestureDetector(
+                  onTap: () {
+                    speakText("Hotlines & Banks");
+                  },
+                  child: Text(
+                    "Hotlines & Banks",
+                    style: Theme.of(context).textTheme.headline6,
+                  ),
                 ),
                 //TextButton(onPressed: (){}, child: Text("View All")),
               ],

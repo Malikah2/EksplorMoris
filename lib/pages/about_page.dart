@@ -10,7 +10,6 @@ class AboutPage extends StatefulWidget {
 }
 
 class _AboutPageState extends State<AboutPage> {
- // String _version ='';
   late String appVersion;
 
   @override

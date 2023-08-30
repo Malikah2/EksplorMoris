@@ -2,11 +2,17 @@ import 'package:example/pages/signup_screen.dart';
 import 'package:example/widgets/forget_password_mail.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'home_page.dart';
 import 'home_widget.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+  final FlutterTts flutterTts = FlutterTts();
+   LoginScreen({Key? key}) : super(key: key);
+
+   Future<void> speakText(String text) async {
+     await flutterTts.setLanguage("en-US");
+     await flutterTts.speak(text);
+   }
 
   @override
   Widget build(BuildContext context) {
@@ -21,19 +27,29 @@ class LoginScreen extends StatelessWidget {
               ),
               Image.asset('assets/login.png', height: 200),
               SizedBox(height: 1), // adding spacing between image and text
-              Text(
-                'Welcome Back!',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
+              GestureDetector(
+                onTap: () {
+                  speakText("Welcome Back!");
+                },
+                child: Text(
+                  'Welcome Back!',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
               SizedBox(height: 5),
-              Text(
-                'Please log in to continue.',
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.grey,
+              GestureDetector(
+                onTap: () {
+                  speakText('Please log in to continue.');
+                },
+                child: Text(
+                  'Please log in to continue.',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.grey,
+                  ),
                 ),
               ),
 
@@ -50,11 +66,14 @@ class LoginScreen extends StatelessWidget {
                           hintText: 'Enter your email',
                           border: OutlineInputBorder(),
                         ),
+                        onTap: () {
+                          speakText("Enter your email");
+                        },
                       ),
                       const SizedBox(height: 10),
                       TextFormField(
                         decoration: const InputDecoration(
-                          prefixIcon: Icon(Icons.fingerprint),
+                          prefixIcon: Icon(Icons.password),
                           labelText: 'Password',
                           hintText: 'Enter your password',
                           border: OutlineInputBorder(),
@@ -63,6 +82,9 @@ class LoginScreen extends StatelessWidget {
                             icon: Icon(Icons.remove_red_eye_sharp),
                           ),
                         ),
+                        onTap: () {
+                          speakText("Enter your password");
+                        },
                       ),
                       const SizedBox(height: 0),
                       Align(
@@ -95,6 +117,7 @@ class LoginScreen extends StatelessWidget {
                                       onTap: () {
                                         Navigator.pop(context);
                                         Get.to(() => const ForgetPasswordMailScreen());
+                                        speakText('Reset via E-mail Verification');
                                       },
                                       child: Container(
                                         padding: const EdgeInsets.all(16),
@@ -138,7 +161,9 @@ class LoginScreen extends StatelessWidget {
                                       height: 20.0,
                                     ),
                                     GestureDetector(
-                                      onTap: () {},
+                                      onTap: () {
+                                        speakText("Reset via phone verification");
+                                      },
                                       child: Container(
                                         padding: const EdgeInsets.all(20.0),
                                         decoration: BoxDecoration(
@@ -195,6 +220,7 @@ class LoginScreen extends StatelessWidget {
                                 builder: (context) => Home(),
                               ),
                             );
+                            speakText('Login');
                           },
                           child: Text('Login'),
                         ),
@@ -215,7 +241,11 @@ class LoginScreen extends StatelessWidget {
                         width: 20.0,
                       ),
                       onPressed: () {},
-                      label: Text('Sign in with Google'),
+                      label: GestureDetector(
+                        onTap: () {
+                          speakText("Sign in with Google");
+                        },
+                          child: Text('Sign in with Google')),
                     ),
                   ),
                   const SizedBox(

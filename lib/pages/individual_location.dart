@@ -1,12 +1,9 @@
 import 'dart:ui';
-
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:example/pages/round_details_page.dart';
 import 'package:example/pages/tourist_details_page.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
 import 'favorites.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 
 Favorites favorites = Favorites();
 
@@ -22,9 +19,14 @@ class IndividualLocationPage extends StatefulWidget {
 
 class _IndividualLocationPageState extends State<IndividualLocationPage> {
   bool isDescriptionExpanded = false;
-  // final List<TouristPlace> favoritesPlaces = [];
   late IconData currentIcon = Icons.favorite_border;
   bool saved = false;
+  FlutterTts flutterTts = FlutterTts();
+
+  Future<void> speakText(String text) async {
+    await flutterTts.setLanguage("en-US");
+    await flutterTts.speak(text);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,15 +48,16 @@ class _IndividualLocationPageState extends State<IndividualLocationPage> {
             SizedBox(height: 20),
             IconButton(
               onPressed: () {
+                speakText(saved
+                ? '&{widget.roundplace.name} removed from favorites'
+                    : '${widget.roundplace.name} added to favorites');
+
                 String message = favorites.toggleFavorites(widget.roundplace);
-                String showMessage = message == 'added'
-                    ? '${widget.roundplace.name} added to favorites'
-                    : '${widget.roundplace.name} removed from favorites';
 
                 final scaffoldMessenger = ScaffoldMessenger.of(context);
                 scaffoldMessenger.showSnackBar(
                   SnackBar(
-                    content: Text(showMessage),
+                    content: Text(message),
                     duration: Duration(seconds: 1),
                   ),
                 );
@@ -86,6 +89,7 @@ class _IndividualLocationPageState extends State<IndividualLocationPage> {
       padding: const EdgeInsets.all(20.0),
       child: InkWell(
         onTap: () {
+          speakText("Go back");
           Navigator.pop(context);
         },
         child: Container(
@@ -149,13 +153,19 @@ class _IndividualLocationPageState extends State<IndividualLocationPage> {
                     ],
                   ),
                 ),
-                Text(
-                  widget.roundplace.name,
-                  style: TextStyle(
-                    fontSize: 21,
-                    fontWeight: FontWeight.bold,
+                GestureDetector(
+                  onTap: () {
+                    speakText(widget.roundplace.name);
+                  },
+                  child: Text(
+                    widget.roundplace.name,
+                    style: TextStyle(
+                      fontSize: 21,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.left,
+
                   ),
-                  textAlign: TextAlign.left,
                 ),
                 const SizedBox(
                   height: 20,
@@ -163,16 +173,6 @@ class _IndividualLocationPageState extends State<IndividualLocationPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    // Row(
-                    //   children: [
-                    //     CircleAvatar(
-                    //       radius: 25,
-                    //       child: Icon(Icons.attach_money, color: Colors.white,),
-                    //     ),
-                    //     const SizedBox(width: 8,),
-                    //     Text(widget.roundplace.price),
-                    //   ],
-                    // ),
                     const SizedBox(
                       width: 12,
                     ),
@@ -217,13 +217,18 @@ class _IndividualLocationPageState extends State<IndividualLocationPage> {
                     height: 5,
                   ),
                 ),
-                Text(
-                  "Description",
-                  style: TextStyle(
-                    fontSize: 19,
-                    fontWeight: FontWeight.bold,
+                GestureDetector(
+                  onTap: (){
+                    speakText("Description");
+                  },
+                  child: Text(
+                    "Description",
+                    style: TextStyle(
+                      fontSize: 19,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                  textAlign: TextAlign.center,
                 ),
                 const SizedBox(
                   height: 15,
@@ -233,6 +238,12 @@ class _IndividualLocationPageState extends State<IndividualLocationPage> {
                     setState(() {
                       isDescriptionExpanded = !isDescriptionExpanded;
                     });
+                    speakText(isDescriptionExpanded
+                        ? widget.roundplace.description
+                        : (widget.roundplace.description.length > 100
+                        ? widget.roundplace.description.substring(0, 100) +
+                        "... Read More"
+                        : widget.roundplace.description));
                   },
                   child: Text(
                     isDescriptionExpanded

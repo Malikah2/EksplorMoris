@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:example/pages/other_page.dart';
-import 'package:ionicons/ionicons.dart';
-import 'package:example/widgets/custom_icon_button.dart';
 import 'hotline_models.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Hotlines extends StatelessWidget {
   const Hotlines({Key? key}) : super(key: key);
+
+  Future<void> _launchPhoneDialer(String phoneNumber) async {
+    final Uri phoneUri = Uri(scheme: 'tel', path: phoneNumber);
+    if (await canLaunch(phoneUri.toString())) {
+      await launch(phoneUri.toString());
+    } else {
+      // Handle error: unable to launch phone dialer.
+      print('Error launching phone dialer');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +33,9 @@ class Hotlines extends StatelessWidget {
                 )
               ),
               child:InkWell(
-                onTap:() {},
+                onTap:() {
+                  _launchPhoneDialer(hotlinemodels[index].number);
+                },
                 child: Padding(
                   padding: const EdgeInsets.all(10),
                   child: Column(
