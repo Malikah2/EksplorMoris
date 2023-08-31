@@ -96,7 +96,6 @@ class TouristPlaces extends StatelessWidget {
     ),
 
   ];
-
   final List<TouristPlace> foodDetails = [
     TouristPlace(
       id: '43',

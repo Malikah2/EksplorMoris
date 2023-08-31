@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'dart:io';
+import 'package:flutter_tts/flutter_tts.dart';
+
 class ProfileDetailsPage extends StatelessWidget {
   final String username;
   final String email;
@@ -16,11 +17,21 @@ class ProfileDetailsPage extends StatelessWidget {
     required this.phoneNumber,
   });
 
+  FlutterTts flutterTts = FlutterTts();
+  Future<void> speakText(String text) async {
+    await flutterTts.setLanguage("en-US");
+    await flutterTts.speak(text);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Profile Details"),
+        title: GestureDetector(
+          onTap: (){
+            speakText("Profile Details");
+          },
+            child: Text("Profile Details")),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

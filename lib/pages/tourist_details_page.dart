@@ -1,12 +1,9 @@
 //version 4
 import 'package:example/pages/individual_location.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 import 'package:ionicons/ionicons.dart';
-
 import 'favorites.dart';
-import 'favorites_page.dart';
-import 'individual_place.dart';
-
 
 class TouristPlace {
   final String id;
@@ -57,10 +54,14 @@ class TouristDetailsPage extends StatefulWidget {
 
 class _TouristDetailsPageState extends State<TouristDetailsPage> {
   final List<TouristPlace> favoritesPlaces = [];
+  late IconData currentIcon = Icons.favorite_border;
+  bool saved = false;
+  FlutterTts flutterTts = FlutterTts();
 
-late IconData currentIcon = Icons.favorite_border;
-
-bool saved = false;
+  Future<void> speakText(String text) async {
+    await flutterTts.setLanguage('en-US');
+    await flutterTts.speak(text);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -116,32 +117,35 @@ bool saved = false;
                                   right: 10, // Adjust the position as needed
                                   child: IconButton(
                                     onPressed: () {
-                                      String message = favorites.toggleFavorites(place);
+                                      String message =
+                                          favorites.toggleFavorites(place);
                                       String showMessage = message == 'added'
                                           ? '${place.name} added to favorites'
                                           : '${place.name} removed from favorites';
 
-                                      final scaffoldMessenger = ScaffoldMessenger.of(context);
+                                      final scaffoldMessenger =
+                                          ScaffoldMessenger.of(context);
                                       scaffoldMessenger.showSnackBar(
-                                      SnackBar(
-                                      content: Text(showMessage),
-                                      duration: Duration(seconds: 1),
-                                      ),
+                                        SnackBar(
+                                          content: Text(showMessage),
+                                          duration: Duration(seconds: 1),
+                                        ),
                                       );
                                       setState(() {
                                         saved = !saved;
-                                        currentIcon =  saved
+                                        currentIcon = saved
                                             ? Icons.favorite
                                             : Icons.favorite_border;
-
                                       });
-
+                                      speakText(showMessage);
                                     },
                                     icon: Icon(
-                                      currentIcon =  favorites.isFavorite(place)
+                                      currentIcon = favorites.isFavorite(place)
                                           ? Icons.favorite
                                           : Icons.favorite_border,
-                                      color: favorites.isFavorite(place) ? Colors.red : Colors.black,
+                                      color: favorites.isFavorite(place)
+                                          ? Colors.red
+                                          : Colors.black,
                                       size: 24,
                                     ),
                                   ),
@@ -182,27 +186,19 @@ bool saved = false;
                         SizedBox(
                           height: 6.0,
                         ),
-                        Text(
-                          place.name,
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
+                        GestureDetector(
+                          onTap: () {
+                            speakText(place.name);
+                          },
+                          child: Text(
+                            place.name,
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            textAlign: TextAlign.center,
                           ),
-                          textAlign: TextAlign.center,
                         ),
-                        // if (place.subtitle.isEmpty)
-                        //   SizedBox(
-                        //     height: 6.0,
-                        //   ),
-                        // if (place.subtitle.isNotEmpty)
-                        //   Text(
-                        //     place.subtitle,
-                        //     style: TextStyle(
-                        //       fontSize: 12,
-                        //       fontWeight: FontWeight.bold,
-                        //     ),
-                        //     textAlign: TextAlign.right,
-                        //   ),
                         SizedBox(
                           height: 10.0,
                         ),

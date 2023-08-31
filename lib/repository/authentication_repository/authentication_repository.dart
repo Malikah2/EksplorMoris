@@ -20,7 +20,7 @@ late final Rx<User?> firebaseUser;
 }
 
 _setInitialScreen(User? user) {
-  user == null ? Get.offAll(() => const WelcomePage()) : Get.offAll(() => const HomePage());
+  user == null ? Get.offAll(() =>  WelcomePage()) : Get.offAll(() => const HomePage());
 }
 
 Future<void> createUserWithEmailAndPassword(String email, String password) async {

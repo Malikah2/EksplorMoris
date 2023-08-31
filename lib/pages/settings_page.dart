@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 import 'package:get/get.dart';
 
 class ThemeController extends GetxController {
@@ -22,27 +23,45 @@ class _SettingsPageState extends State<SettingsPage> {
   bool _isDarkModeEnabled = false;
   bool _isLocationEnabled = false;
   String _selectedLanguage = 'English';
+  FlutterTts flutterTts = FlutterTts();
+  Future<void> speakText(String text) async {
+    await flutterTts.setLanguage("en-US");
+    await flutterTts.speak(text);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Settings"),
+        title: GestureDetector(
+          onTap: (){
+            speakText("Settings");
+          },
+            child: Text("Settings")),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              "Theme",
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
+            GestureDetector(
+              onTap: (){
+                speakText("Theme");
+              },
+              child: Text(
+                "Theme",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
             SwitchListTile(
-              title: Text("Light Mode"),
+              title: GestureDetector(
+                onTap: (){
+                  speakText("Light Mode");
+                },
+                  child: Text("Light Mode")),
               value: _isDarkModeEnabled,
               onChanged: (value) {
                 setState(() {
@@ -55,15 +74,24 @@ class _SettingsPageState extends State<SettingsPage> {
             SizedBox(
               height: 10,
             ),
-            Text(
-              "Location Preference",
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
+            GestureDetector(
+              onTap: (){
+                speakText("Location Preference");
+              },
+              child: Text(
+                "Location Preference",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
             SwitchListTile(
-              title: Text("Enable Location"),
+              title: GestureDetector(
+                onTap: (){
+                  speakText("Enable Location");
+                },
+                  child: Text("Enable Location")),
               value: _isLocationEnabled,
               onChanged: (value) {
                 setState(() {
@@ -77,11 +105,16 @@ class _SettingsPageState extends State<SettingsPage> {
             SizedBox(
               height: 10,
             ),
-            Text(
-              "Language Preference",
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
+            GestureDetector(
+              onTap: (){
+                speakText("Language Preference");
+              },
+              child: Text(
+                "Language Preference",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
             SizedBox(
@@ -106,7 +139,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       _changeLanguagePreference(newValue);
                     });
                   },
-                  items: <String>['English', 'French', 'Spanish', 'Germany']
+                  items: <String>['English', 'French', 'Spanish', 'German']
                       .map<DropdownMenuItem<String>>((String value) {
                     return DropdownMenuItem<String>(
                       value: value,
@@ -119,11 +152,16 @@ class _SettingsPageState extends State<SettingsPage> {
             SizedBox(
               height: 30,
             ),
-            Text(
-              "System Updates",
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
+            GestureDetector(
+              onTap: (){
+                speakText("System Updates");
+              },
+              child: Text(
+                "System Updates",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
             SizedBox(
@@ -150,11 +188,16 @@ class _SettingsPageState extends State<SettingsPage> {
                 ),
                 child: Row(
                   children: [
-                    Text(
-                      "Check for updates",
-                      style: TextStyle(
-                        color: Colors.lightBlueAccent,
-                        fontSize: 18,
+                    GestureDetector(
+                      onTap: (){
+                        speakText("Check for Updates");
+                      },
+                      child: Text(
+                        "Check for updates",
+                        style: TextStyle(
+                          color: Colors.lightBlueAccent,
+                          fontSize: 18,
+                        ),
                       ),
                     ),
                   ],

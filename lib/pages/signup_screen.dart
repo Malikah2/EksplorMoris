@@ -1,14 +1,20 @@
 import 'package:example/pages/login_screen.dart';
 import 'package:example/signup_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
-import 'home_page.dart';
+import 'home_widget.dart';
+
 
 class SignUpScreen extends StatelessWidget {
-  const SignUpScreen({Key? key}) : super(key: key);
-
+   SignUpScreen({Key? key}) : super(key: key);
+FlutterTts flutterTts = FlutterTts();
+   Future<void> speakText(String text) async {
+     await flutterTts.setLanguage("en-US");
+     await flutterTts.speak(text);
+   }
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(SignUpController());
@@ -22,10 +28,15 @@ class SignUpScreen extends StatelessWidget {
               SizedBox(height: 25,),
               Image.asset('assets/login.png',height: 200,),
               SizedBox(height: 1), // adding spacing between image and text
-              Text('Welcome!',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
+              GestureDetector(
+                onTap: (){
+                  speakText("Welcome");
+                },
+                child: Text('Welcome!',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
               SizedBox(height: 5),
@@ -76,10 +87,19 @@ class SignUpScreen extends StatelessWidget {
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
+                          // onPressed: () {
+                          //  if (_formKey.currentState!.validate()){
+                          //    SignUpController.instance.registerUser(controller.email.text.trim(), controller.password.text.trim());
+                          //  }
+                          // },
                           onPressed: () {
-                           if (_formKey.currentState!.validate()){
-                             SignUpController.instance.registerUser(controller.email.text.trim(), controller.password.text.trim());
-                           }
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Home(),
+                              ),
+                            );
+                            speakText('SignUp');
                           },
 
                           child: Text('SignUp'),
@@ -99,7 +119,11 @@ class SignUpScreen extends StatelessWidget {
                     child: OutlinedButton.icon(
                       icon: Image.asset('assets/google.png', width: 20.0,),
                       onPressed: () {},
-                      label: Text('Sign in with Google'),
+                      label: GestureDetector(
+                        onTap: (){
+                          speakText("Sign in with Google");
+                        },
+                          child: Text('Sign in with Google')),
                     ),
                   ),
                   const SizedBox(height: 1,),

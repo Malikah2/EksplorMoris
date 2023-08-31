@@ -1,6 +1,7 @@
 import 'package:example/pages/tourist_details_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:example/pages/individual_location.dart';
 
@@ -11,7 +12,7 @@ Favorites favorites = Favorites();
 class roundDetailsPage extends StatefulWidget {
   final List<TouristPlace> placeList;
 
-   roundDetailsPage({Key? key, required this.placeList}) : super(key: key);
+  roundDetailsPage({Key? key, required this.placeList}) : super(key: key);
 
   @override
   State<roundDetailsPage> createState() => _roundDetailsPageState();
@@ -19,10 +20,13 @@ class roundDetailsPage extends StatefulWidget {
 
 class _roundDetailsPageState extends State<roundDetailsPage> {
   final List<TouristPlace> favoritesPlaces = [];
-
   late IconData currentIcon = Icons.favorite_border;
-
   bool saved = false;
+  FlutterTts flutterTts = FlutterTts();
+  Future<void> speakText(String text) async{
+    await flutterTts.setLanguage('en-US');
+    await flutterTts.speak(text);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +38,7 @@ class _roundDetailsPageState extends State<roundDetailsPage> {
             padding: const EdgeInsets.all(5.0),
             sliver: SliverList(
               delegate: SliverChildBuilderDelegate(
-                    (context, index) {
+                (context, index) {
                   final place = widget.placeList[index];
                   return GestureDetector(
                     onTap: () {
@@ -43,7 +47,7 @@ class _roundDetailsPageState extends State<roundDetailsPage> {
                         MaterialPageRoute(
                           builder: (context) => IndividualLocationPage(
                             roundplace: place,
-                                                       // Pass the selected place to the details page
+                            // Pass the selected place to the details page
                           ),
                         ),
                       );
@@ -71,34 +75,41 @@ class _roundDetailsPageState extends State<roundDetailsPage> {
                                   ),
                                 ),
                                 Positioned(
-                                    top: 10,
+                                  top: 10,
                                   right: 10,
                                   child: IconButton(
                                     onPressed: () {
-                                      String message = favorites.toggleFavorites(place);
+                                      String message =
+                                          favorites.toggleFavorites(place);
                                       String showMessage = message == 'added'
-                                          ? '${place.name} added to favorites'
-                                          : '${place.name} removed from favorites';
+                                          ? '${place.name} removed from favorites'
+                                          : '${place.name} added to favorites';
 
-                                      final scaffoldMessenger = ScaffoldMessenger.of(context);
+                                      final scaffoldMessenger =
+                                          ScaffoldMessenger.of(context);
                                       scaffoldMessenger.showSnackBar(
                                         SnackBar(
                                           content: Text(showMessage),
                                           duration: Duration(seconds: 1),
+
                                         ),
+
                                       );
                                       setState(() {
                                         saved = !saved;
-                                        currentIcon =  saved
+                                        currentIcon = saved
                                             ? Icons.favorite
                                             : Icons.favorite_border;
                                       });
+                                      speakText(showMessage);
                                     },
                                     icon: Icon(
                                       currentIcon = favorites.isFavorite(place)
                                           ? Icons.favorite
                                           : Icons.favorite_border,
-                                      color: favorites.isFavorite(place) ? Colors.red : Colors.black,
+                                      color: favorites.isFavorite(place)
+                                          ? Colors.red
+                                          : Colors.black,
                                       size: 24,
                                     ),
                                   ),
@@ -111,7 +122,6 @@ class _roundDetailsPageState extends State<roundDetailsPage> {
                                     decoration: BoxDecoration(
                                       color: Colors.black.withOpacity(0.5),
                                       borderRadius: BorderRadius.circular(15),
-
                                     ),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.min,
@@ -140,27 +150,20 @@ class _roundDetailsPageState extends State<roundDetailsPage> {
                         SizedBox(
                           height: 6.0,
                         ),
-                        Text(
-                          place.name,
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
+                        GestureDetector(
+                          onTap: (){
+                            speakText(place.name);
+                          },
+                          child: Text(
+                            place.name,
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            textAlign: TextAlign.center,
+
                           ),
-                          textAlign: TextAlign.center,
                         ),
-                        // if (place.subtitle.isEmpty)
-                        //   SizedBox(
-                        //     height: 6.0,
-                        //   ),
-                        // if (place.subtitle.isNotEmpty)
-                        //   Text(
-                        //     place.subtitle,
-                        //     style: TextStyle(
-                        //       fontSize: 12,
-                        //       fontWeight: FontWeight.bold,
-                        //     ),
-                        //     textAlign: TextAlign.right,
-                        //   ),
                         SizedBox(
                           height: 10.0,
                         ),

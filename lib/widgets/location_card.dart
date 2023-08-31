@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 
 class LocationCard extends StatelessWidget {
-  const LocationCard({Key? key}) : super(key: key);
+   LocationCard({Key? key}) : super(key: key);
+FlutterTts flutterTts = FlutterTts();
+   Future<void> speakText(String text) async {
+     await flutterTts.setLanguage("en-US");
+     await flutterTts.speak(text);
+   }
 
   @override
   Widget build(BuildContext context) {
@@ -20,16 +26,26 @@ class LocationCard extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  "Your Location",
-                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                    color: Theme.of(context).primaryColor,
+                GestureDetector(
+                  onTap: (){
+                    speakText("Your Location");
+                  },
+                  child: Text(
+                    "Your Location",
+                    style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                      color: Theme.of(context).primaryColor,
+                    ),
                   ),
                 ),
                 const SizedBox(height: 5),
-                Text(
-                  "Tamassa Bel Ombre",
-                  style: Theme.of(context).textTheme.labelLarge,
+                GestureDetector(
+                  onTap: (){
+                    speakText("Tamassa Bel Ombre");
+                  },
+                  child: Text(
+                    "Tamassa Bel Ombre",
+                    style: Theme.of(context).textTheme.labelLarge,
+                  ),
                 )
               ],
             )

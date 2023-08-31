@@ -1,18 +1,19 @@
-import 'package:example/pages/home_page.dart';
 import 'package:flutter/material.dart';
-import '../home_page.dart';
-import '../home_widget.dart';
-import 'package:example/pages/other_page.dart';
-import 'package:ionicons/ionicons.dart';
-import 'package:example/widgets/custom_icon_button.dart';
-import 'package:flutter/material.dart';
-import '../hotline/hotlines.dart';
-import '../other_page.dart';
 import 'hospital_models_otherpage.dart';
-
+import 'package:url_launcher/url_launcher.dart';
 class Hospitals extends StatelessWidget {
-  const Hospitals({Key? key}) : super(key: key);
+   Hospitals({Key? key}) : super(key: key);
 
+
+   Future<void> _launchPhoneDialer(String phoneNumber) async {
+     final Uri phoneUri = Uri(scheme: 'tel', path: phoneNumber);
+     if (await canLaunch(phoneUri.toString())) {
+       await launch(phoneUri.toString());
+     } else {
+       // Handle error: unable to launch phone dialer.
+       print('Error launching phone dialer');
+     }
+   }
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -31,7 +32,10 @@ class Hospitals extends StatelessWidget {
                 ),
                 child: InkWell(
                   borderRadius: BorderRadius.circular(12),
-                  onTap: () {},
+                  onTap: () {
+                    _launchPhoneDialer(hospitalsmodels[index].number);
+
+                  },
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Row(

@@ -1,6 +1,7 @@
 import 'package:example/pages/tourist_details_page.dart';
 import 'package:flutter/material.dart';
 import 'package:example/models/recommended_places_model.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 
 class RecommendedPlaces extends StatelessWidget {
   RecommendedPlaces({Key? key}) : super(key: key);
@@ -673,7 +674,6 @@ class RecommendedPlaces extends StatelessWidget {
       distance: '',
     ),
   ];
-
   List<TouristPlace> combineAllPlaces() {
     return [
       ...TouristDetailsPageDolpins,
@@ -686,7 +686,11 @@ class RecommendedPlaces extends StatelessWidget {
       ...TouristDetailsPageWaterfall
     ];
   }
-
+FlutterTts flutterTts = FlutterTts();
+  Future<void> speakText(String text)async{
+    await flutterTts.setLanguage('en-US');
+    await flutterTts.speak(text);
+  }
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -790,12 +794,17 @@ class RecommendedPlaces extends StatelessWidget {
                         ),
                         const SizedBox(height: 20),
                         Center(
-                          child: Text(
-                            recommendedPlaces[index].text,
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 17,
-                              fontWeight: FontWeight.bold,
+                          child: GestureDetector(
+                            onTap: (){
+                              speakText(recommendedPlaces[index].text);
+                            },
+                            child: Text(
+                              recommendedPlaces[index].text,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 17,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ),

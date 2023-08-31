@@ -1,12 +1,16 @@
 import 'package:example/pages/individual_location.dart';
-import 'package:example/pages/individual_nearbyplaces.dart';
 import 'package:flutter/material.dart';
 import 'package:example/models/nearby_places_model.dart';
-import 'package:example/pages/tourist_details_page.dart';
-import 'package:example/widgets/distance.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 
 class NearbyPlaces extends StatelessWidget {
-  const NearbyPlaces({Key? key}) : super(key: key);
+   NearbyPlaces({Key? key}) : super(key: key);
+  FlutterTts flutterTts = FlutterTts();
+
+  Future<void> speakText(String text) async {
+    await flutterTts.setLanguage('en-US');
+    await flutterTts.speak(text);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,11 +60,16 @@ class NearbyPlaces extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.only(bottom: 1),
                               child: Center(
-                                child: Text(
-                                  nearbyPlaces[index].name,
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
+                                child: GestureDetector(
+                                  onTap: () {
+                                    speakText(nearbyPlaces[index].name);
+                                  },
+                                  child: Text(
+                                    nearbyPlaces[index].name,
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
                                 ),
                               ),

@@ -6,11 +6,11 @@ class Favorites{
   String toggleFavorites(TouristPlace place){
     if (favoritesPlaces.contains(place)) {
       favoritesPlaces.remove(place);
-      return "removed";
+      return "removed from Favorite";
     } else {
       favoritesPlaces.add(place);
       display();
-      return "added";
+      return "added to Favorite";
     }
   }
   List<TouristPlace> getFavorites(){

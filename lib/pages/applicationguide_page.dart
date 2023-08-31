@@ -75,7 +75,7 @@ class ApplicationGuidePage extends StatelessWidget {
                 speakText("How to use EksploreMoris");
               },
               child: Text(
-                "How to use EksploreMoris",
+                "How to use EksplorMoris",
                 style: TextStyle(
                   fontSize: 19,
                   fontWeight: FontWeight.bold,

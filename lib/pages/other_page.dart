@@ -1,7 +1,5 @@
 import 'package:example/pages/pharmacy_viewall/pharmacies_viewall.dart';
 import 'package:flutter/material.dart';
-import 'package:ionicons/ionicons.dart';
-import 'package:example/widgets/custom_icon_button.dart';
 import 'hospital_otherpage/hospitals_otherpage.dart';
 import 'hotline/hotlines.dart';
 import 'hospital_viewall/hospitals_viewall.dart';
@@ -40,10 +38,10 @@ class OtherPage extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: () {
-                    speakText("Hotlines & Banks");
+                    speakText("Hotlines");
                   },
                   child: Text(
-                    "Hotlines & Banks",
+                    "Hotlines",
                     style: Theme.of(context).textTheme.headline6,
                   ),
                 ),
@@ -56,16 +54,21 @@ class OtherPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  "Hospitals & Clinics",
-                  style: Theme.of(context).textTheme.headline6,
+                GestureDetector(
+                  onTap: () {
+                    speakText("Hospitals & Clinics");
+                  },
+                  child: Text(
+                    "Hospitals & Clinics",
+                    style: Theme.of(context).textTheme.headline6,
+                  ),
                 ),
                 TextButton(
                     onPressed: () {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const AllHospitals(),
+                          builder: (context) =>  AllHospitals(),
                         ),
                       );
                     },
@@ -73,21 +76,26 @@ class OtherPage extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 10),
-            const Hospitals(),
+             Hospitals(),
             const SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  "Pharmacy",
-                  style: Theme.of(context).textTheme.headline6,
+                GestureDetector(
+                  onTap: () {
+                    speakText("Pharmacy");
+                  },
+                  child: Text(
+                    "Pharmacy",
+                    style: Theme.of(context).textTheme.headline6,
+                  ),
                 ),
                 TextButton(
                     onPressed: () {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const AllPharmacies(),
+                          builder: (context) =>  AllPharmacies(),
                         ),
                       );
                     },
@@ -95,21 +103,26 @@ class OtherPage extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 10),
-            const Pharmacy(),
+             Pharmacy(),
             const SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  "Banks",
-                  style: Theme.of(context).textTheme.headline6,
+                GestureDetector(
+                  onTap: () {
+                    speakText("Banks");
+                  },
+                  child: Text(
+                    "Banks",
+                    style: Theme.of(context).textTheme.headline6,
+                  ),
                 ),
                 TextButton(
                     onPressed: () {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const AllBanks(),
+                          builder: (context) =>  AllBanks(),
                         ),
                       );
                     },
@@ -117,7 +130,7 @@ class OtherPage extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 10),
-            const Bank(),
+             Bank(),
           ],
         ),
       ),

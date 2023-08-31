@@ -1,11 +1,15 @@
-import 'package:example/pages/home_page.dart';
 import 'package:example/pages/login_screen.dart';
 import 'package:example/pages/signup_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 
 class WelcomePage extends StatelessWidget {
-  const WelcomePage({Key? key}) : super(key: key);
-
+   WelcomePage({Key? key}) : super(key: key);
+FlutterTts flutterTts = FlutterTts();
+   Future<void> speakText(String text) async {
+     await flutterTts.setLanguage("en-US");
+     await flutterTts.speak(text);
+   }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,21 +24,33 @@ class WelcomePage extends StatelessWidget {
                   'assets/illustration.png',
                 ),
                 const SizedBox(height: 40),
-                Text(
-                  "Your gateway to discovering the \n breathtaking beauty of Mauritius is here!",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
+                GestureDetector(
+                  onTap: (){
+                    speakText("Your gateway to discovering the \n breathtaking beauty of Mauritius is here!",
+                    );
+                  },
+                  child: Text(
+                    "Your gateway to discovering the \n breathtaking beauty of Mauritius is here!",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
                 const SizedBox(height: 20),
-                const Text(
-                  "Embark on a journey to explore the hidden gems and iconic landmarks that make Mauritius a tropical paradise like no other.",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black54,
-                    fontSize: 16,
+                GestureDetector(
+                  onTap: (){
+                    speakText("Embark on a journey to explore the hidden gems and iconic landmarks that make Mauritius a tropical paradise like no other.",
+                    );
+                  },
+                  child: const Text(
+                    "Embark on a journey to explore the hidden gems and iconic landmarks that make Mauritius a tropical paradise like no other.",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.black54,
+                      fontSize: 16,
+                    ),
                   ),
                 ),
                 const Spacer(),
@@ -61,7 +77,11 @@ class WelcomePage extends StatelessWidget {
                               horizontal: 10.0,
                             ),
                           ),
-                          child: const Text("Login"),
+                          child: GestureDetector(
+                            onTap: (){
+                              speakText("Login");
+                            },
+                              child: const Text("Login")),
                         ),
                       ),
                       SizedBox(height: 10), // Add some spacing
@@ -84,7 +104,11 @@ class WelcomePage extends StatelessWidget {
                               horizontal: 8.0,
                             ),
                           ),
-                          child: const Text("Sign Up"),
+                          child: GestureDetector(
+                            onTap: (){
+                              speakText("Sign Up");
+                            },
+                              child: const Text("Sign Up")),
                         ),
                       ),
                     ],

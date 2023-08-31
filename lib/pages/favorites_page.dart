@@ -1,7 +1,7 @@
 import 'package:example/pages/favorites.dart';
 import 'package:example/pages/tourist_details_page.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_tts/flutter_tts.dart';
 class FavoritesPage extends StatefulWidget {
   @override
   _FavoritesPageState createState() => _FavoritesPageState();
@@ -12,20 +12,22 @@ Favorites favorites = Favorites();
 class _FavoritesPageState extends State<FavoritesPage> {
   List<TouristPlace> favoritesPlaces = favorites.getFavorites();
   bool isExpanded = false;
+  FlutterTts flutterTts = FlutterTts();
+
+  Future<void> speakText(String text) async {
+    Future<void> speakText(String text) async {
+      await flutterTts.setLanguage("en-US");
+      await flutterTts.speak(text);
+    }
+  }
 
   Future<void> _refreshFavorites() async {
-    // You can perform any asynchronous tasks here, such as fetching updated data
-    // For demonstration purposes, I'm just using a delay to simulate loading
-    print("Refreshing favorites...");
     await Future.delayed(Duration(seconds: 2));
 
     setState(() {
       favoritesPlaces = favorites.getFavorites();
     });
-    print("Favorites refreshed!");
   }
-
-  //const FavoritesPage({Key? key}) : super(key:key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +39,11 @@ class _FavoritesPageState extends State<FavoritesPage> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Favorite Places'),
+          title: GestureDetector(
+            onTap: (){
+              speakText("Favorite Places");
+            },
+              child: Text('Favorite Places')),
         ),
         body: RefreshIndicator(
           onRefresh: _refreshFavorites,

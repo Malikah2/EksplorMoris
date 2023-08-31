@@ -72,28 +72,16 @@ class _HomePageState extends State<HomePage> {
             children: [
               GestureDetector(
                 onTap: () {
-                  speakText("Good Morning Malikah");
+                  speakText("Good Morning, Malikah");
                 },
-                child:  Text("Good Morning\nMalikah", style: Theme.of(context).textTheme.labelMedium),
+                child: Text("Good Morning, Malikah",
+                    style: Theme.of(context).textTheme.labelLarge),
               ),
-
             ],
           ),
           actions: [
-            GestureDetector(
-              onTap: () {
-                speakText("Back");
-                AuthenticationRepository.instance.logout();
-              },
-              child: Padding(
-                padding: EdgeInsets.only(left: 8.0, right: 12),
-                child: IconButton(
-                  onPressed: () {
-                    AuthenticationRepository.instance.logout();
-                  },
-                  icon: Icon(Ionicons.arrow_back_circle_outline),
-                ),
-              ),
+            Padding(
+              padding: EdgeInsets.only(left: 8.0, right: 12),
             ),
           ],
         ),
@@ -219,9 +207,9 @@ class _HomePageState extends State<HomePage> {
               ),
               child: ListTile(
                 title: GestureDetector(
-                  onTap: () {
-                    speakText(place.name);
-                  },
+                    onTap: () {
+                      speakText(place.name);
+                    },
                     child: Text(place.name)),
                 leading: Container(
                   width: 50,
@@ -239,9 +227,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 // Add additional fields as needed
-
               ),
-
             ),
           );
         },
