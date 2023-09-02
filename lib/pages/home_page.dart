@@ -1,6 +1,6 @@
+import 'package:dialog_flowtter/dialog_flowtter.dart';
 import 'package:example/pages/individual_location.dart';
 import 'package:example/pages/tourist_details_page.dart';
-import 'package:example/repository/authentication_repository/authentication_repository.dart';
 import 'package:example/widgets/location_card.dart';
 import 'package:example/widgets/nearby_places.dart';
 import 'package:example/widgets/recommended_places.dart';
@@ -23,8 +23,11 @@ class _HomePageState extends State<HomePage> {
   bool isSearchBarFocused = false;
   final FocusNode _searchFocusNode = FocusNode();
   List<TouristPlace> allPlaces = RecommendedPlaces().combineAllPlaces();
-
   FlutterTts flutterTts = FlutterTts();
+  late DialogFlowtter dialogFlowtter;
+  final TextEditingController _controller = TextEditingController();
+
+  List<Map<String, dynamic>> messages = [];
 
   Future<void> speakText(String text) async {
     await flutterTts.setLanguage("en-US");
@@ -41,6 +44,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     _searchFocusNode.addListener(_onSearchBarFocusChange);
+    //DialogFlowtter.fromFile().then((instance) => dialogFlowtter = instance);
   }
 
   @override
@@ -83,75 +87,101 @@ class _HomePageState extends State<HomePage> {
             Padding(
               padding: EdgeInsets.only(left: 8.0, right: 12),
             ),
-          ],
-        ),
-        body: ListView(
-          physics: BouncingScrollPhysics(),
-          padding: const EdgeInsets.all(14),
-          children: [
-            buildSearchBar(),
-            AnimatedContainer(
-              duration: Duration(milliseconds: 300),
-              height: isSearchBarFocused ? 300 : 0,
-              child: Visibility(
-                visible: isSearchBarFocused,
-                maintainState: true,
-                child: buildSearchResults(),
+            IconButton(
+              icon: Icon(
+                Icons.chat,
+                color: Colors.black,
               ),
+              onPressed: () {},
             ),
-            // Location card
-            LocationCard(),
-            const SizedBox(
-              height: 15,
-            ),
-            TouristPlaces(),
-            //categories
-            const SizedBox(
-              height: 10,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    speakText("Recommendations");
-                  },
-                  child: Text(
-                    "Recommendation",
-                    style: Theme.of(context).textTheme.headline6,
-                  ),
-                ),
-              ],
-            ),
-            //recommendation
-            const SizedBox(
-              height: 10,
-            ),
-            RecommendedPlaces(),
-            const SizedBox(
-              height: 10,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    speakText("Nearby From You");
-                  },
-                  child: Text(
-                    "Nearby From You",
-                    style: Theme.of(context).textTheme.headline6,
-                  ),
-                ),
-                //TextButton(onPressed: (){}, child: const Text("View All"),)
-              ],
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            NearbyPlaces(),
           ],
         ),
+        body: Stack(children: [
+          ListView(
+            physics: BouncingScrollPhysics(),
+            padding: const EdgeInsets.all(14),
+            children: [
+              buildSearchBar(),
+              AnimatedContainer(
+                duration: Duration(milliseconds: 300),
+                height: isSearchBarFocused ? 300 : 0,
+                child: Visibility(
+                  visible: isSearchBarFocused,
+                  maintainState: true,
+                  child: buildSearchResults(),
+                ),
+              ),
+              // Location card
+              LocationCard(),
+              const SizedBox(
+                height: 15,
+              ),
+              TouristPlaces(),
+              //categories
+              const SizedBox(
+                height: 10,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      speakText("Recommendations");
+                    },
+                    child: Text(
+                      "Recommendation",
+                      style: Theme.of(context).textTheme.headline6,
+                    ),
+                  ),
+                ],
+              ),
+              //recommendation
+              const SizedBox(
+                height: 10,
+              ),
+              RecommendedPlaces(),
+              const SizedBox(
+                height: 10,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      speakText("Nearby From You");
+                    },
+                    child: Text(
+                      "Nearby From You",
+                      style: Theme.of(context).textTheme.headline6,
+                    ),
+                  ),
+                  //TextButton(onPressed: (){}, child: const Text("View All"),)
+                ],
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              NearbyPlaces(),
+            ],
+          ),
+          // //Chat interface at top right
+          // Positioned(
+          //   top: kToolbarHeight,
+          //   right: 0,
+          //   child: Container(
+          //     width: 300,
+          //     height: MediaQuery.of(context).size.height - kToolbarHeight,
+          //     color: Colors.blue,
+          //     //add content
+          //     child: Center(
+          //       child: Text(
+          //         "Chat Interface",
+          //         style: TextStyle(fontSize: 20),
+          //       ),
+          //     ),
+          //   ),
+          // )
+        ]),
       ),
     );
   }
