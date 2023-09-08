@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:example/pages/tourist_details_page.dart';
+import 'package:example/widgets/mauritius_map.dart';
 import 'package:flutter/material.dart';
 import 'favorites.dart';
 import 'package:flutter_tts/flutter_tts.dart';
@@ -22,6 +23,7 @@ class _IndividualLocationPageState extends State<IndividualLocationPage> {
   late IconData currentIcon = Icons.favorite_border;
   bool saved = false;
   FlutterTts flutterTts = FlutterTts();
+  bool showMap = false;
 
   Future<void> speakText(String text) async {
     await flutterTts.setLanguage("en-US");
@@ -178,17 +180,22 @@ class _IndividualLocationPageState extends State<IndividualLocationPage> {
                     ),
                     Row(
                       children: [
-                        CircleAvatar(
-                          radius: 25,
-                          child: Icon(
-                            Icons.location_on,
-                            color: Colors.white,
+                        GestureDetector(
+                          onTap: (){
+                            _showMapDialog(context);
+                          },
+                          child: CircleAvatar(
+                            radius: 25,
+                            child: Icon(
+                              Icons.location_on,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                         const SizedBox(
                           width: 8,
                         ),
-                        Text(widget.roundplace.duration),
+                        Text("Location Details"),
                       ],
                     ),
                     const SizedBox(
@@ -312,4 +319,28 @@ class _IndividualLocationPageState extends State<IndividualLocationPage> {
       },
     );
   }
+
+}
+
+void _showMapDialog(BuildContext context) {
+  showDialog(
+      context: context,
+      builder: (BuildContext context){
+        return AlertDialog(
+          title: Text('Location Map'),
+          content: Container(
+            height: 300,
+            child: MapWidget(),
+          ),
+          actions: <Widget>[
+            ElevatedButton(
+                onPressed: (){
+                  Navigator.of(context).pop();
+                },
+                child: Text('Close'),
+            ),
+          ],
+        );
+      },
+  );
 }
