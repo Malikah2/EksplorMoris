@@ -106,7 +106,7 @@ List<TouristPlace> nearbyPlaces = [
     image4: 'assets/rhum4.jpg',
     image5: 'assets/rhum5.png',
     subtitle: '', price: '',
-    latitude: 20.4279,
+    latitude: -20.4279,
     longitude: 57.3963,
   ),
 
