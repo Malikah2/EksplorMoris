@@ -1,4 +1,5 @@
 //version 4
+import 'package:dialog_flowtter/dialog_flowtter.dart';
 import 'package:example/pages/individual_location.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
@@ -12,7 +13,8 @@ class TouristPlace {
   final String subtitle;
   final String description;
   final String price;
-  final String location;
+  final double latitude;
+  final double longitude;
   final String rating;
   final String duration;
   final String image1;
@@ -29,7 +31,8 @@ class TouristPlace {
     required this.subtitle,
     required this.description,
     required this.price,
-    required this.location,
+    required this.longitude,
+    required this.latitude,
     required this.rating,
     required this.duration,
     required this.image1,

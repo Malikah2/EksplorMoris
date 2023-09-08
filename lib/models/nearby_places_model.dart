@@ -1,3 +1,4 @@
+import 'package:dialog_flowtter/dialog_flowtter.dart';
 import 'package:example/pages/tourist_details_page.dart';
 
 List<TouristPlace> nearbyPlaces = [
@@ -14,7 +15,9 @@ List<TouristPlace> nearbyPlaces = [
     image3: 'assets/hiking/hiking3.jpg',
     image4: 'assets/hiking/hiking4.jpg',
     image5: 'assets/hiking/hiking5.jpg',
-    subtitle: '', price: '', location: '',
+    subtitle: '', price: '',
+    latitude: -20.454075,
+    longitude: 57.323102,
   ),
 
   TouristPlace(
@@ -30,7 +33,10 @@ List<TouristPlace> nearbyPlaces = [
     image3: 'assets/waterfalls/waterfall8.jpg',
     image4: 'assets/waterfalls/waterfall9.jpg',
     image5: 'assets/waterfalls/waterfall10.jpg',
-    subtitle: '', price: '', location: '',  ),
+    subtitle: '', price: '',
+    latitude: -20.425094,
+    longitude: 57.391685,
+  ),
 
   TouristPlace(
     id: '65',
@@ -45,7 +51,10 @@ List<TouristPlace> nearbyPlaces = [
     image3: 'assets/chamarel3.jpg',
     image4: 'assets/chamarel4.jpg',
     image5: 'assets/chamarel5.jpg',
-    subtitle: '', price: '', location: '',  ),
+    subtitle: '', price: '',
+    latitude:-20.440318,
+    longitude: 57.373392,
+  ),
 
   TouristPlace(
     id: '66',
@@ -60,7 +69,9 @@ List<TouristPlace> nearbyPlaces = [
     image3: 'assets/catamaran/catamaran18.jpg',
     image4: 'assets/catamaran/catamaran19.jpg',
     image5: 'assets/catamaran/catamaran20.jpg',
-    subtitle: '', price: '', location: '',
+    subtitle: '', price: '',
+    latitude: -20.41908,
+    longitude: 57.34432,
   ),
 
   TouristPlace(
@@ -76,7 +87,9 @@ List<TouristPlace> nearbyPlaces = [
     image3: 'assets/grisgris3.jpg',
     image4: 'assets/grisgris4.jpg',
     image5: 'assets/grisgris5.jpg',
-    subtitle: '', price: '', location: '',
+    subtitle: '', price: '',
+    latitude: -20.52222,
+    longitude: 57.52361,
   ),
 
   TouristPlace(
@@ -92,7 +105,9 @@ List<TouristPlace> nearbyPlaces = [
     image3: 'assets/rhum3.png',
     image4: 'assets/rhum4.jpg',
     image5: 'assets/rhum5.png',
-    subtitle: '', price: '', location: '',
+    subtitle: '', price: '',
+    latitude: 20.4279,
+    longitude: 57.3963,
   ),
 
   TouristPlace(
@@ -108,6 +123,8 @@ List<TouristPlace> nearbyPlaces = [
     image3: 'assets/crocodile3.jpg',
     image4: 'assets/crocodile4.jpg',
     image5: 'assets/crocodile5.jpg',
-    subtitle: '', price: '', location: '',
+    subtitle: '', price: '',
+    latitude: -20.499613,
+    longitude: 57.56373,
   ),
 ];

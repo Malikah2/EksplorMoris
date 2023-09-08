@@ -182,7 +182,11 @@ class _IndividualLocationPageState extends State<IndividualLocationPage> {
                       children: [
                         GestureDetector(
                           onTap: (){
-                            _showMapDialog(context);
+                            _showMapDialog(
+                              context,
+                              widget.roundplace.latitude ,
+                              widget.roundplace.longitude ,
+                            );
                           },
                           child: CircleAvatar(
                             radius: 25,
@@ -322,7 +326,7 @@ class _IndividualLocationPageState extends State<IndividualLocationPage> {
 
 }
 
-void _showMapDialog(BuildContext context) {
+void _showMapDialog(BuildContext context, double latitude, double longitude) {
   showDialog(
       context: context,
       builder: (BuildContext context){
@@ -330,7 +334,7 @@ void _showMapDialog(BuildContext context) {
           title: Text('Location Map'),
           content: Container(
             height: 300,
-            child: MapWidget(),
+            child: MapWidget(latitude: latitude, longitude: longitude,),
           ),
           actions: <Widget>[
             ElevatedButton(
