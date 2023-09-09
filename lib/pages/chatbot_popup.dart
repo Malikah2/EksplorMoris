@@ -18,8 +18,7 @@ class _ChatbotPopupState extends State<ChatbotPopup> {
 
   @override
   void initState() {
-    // Initialize dialogFlowtter with your project details
-    dialogFlowtter = DialogFlowtter(projectId: 'eksplormorischatbot-hdbp');
+    dialogFlowtter = DialogFlowtter();
     super.initState();
   }
 
@@ -27,7 +26,7 @@ class _ChatbotPopupState extends State<ChatbotPopup> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Chatbot'),
+        title: Text('Ivy'),
       ),
       body: Container(
         child: Column(
