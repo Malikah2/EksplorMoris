@@ -8,6 +8,9 @@ import 'package:example/widgets/tourist_places.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
+import 'package:dialog_flowtter/dialog_flowtter.dart';
+
+import 'chatbot_popup.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -39,6 +42,7 @@ class _HomePageState extends State<HomePage> {
       isSearchBarFocused = _searchFocusNode.hasFocus;
     });
   }
+
 
   @override
   void initState() {
@@ -92,7 +96,15 @@ class _HomePageState extends State<HomePage> {
                 Icons.chat,
                 color: Colors.black,
               ),
-              onPressed: () {},
+              onPressed: () {
+                // Show the chatbot pop-up when the chat icon is clicked
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return ChatbotPopup(); // Display the ChatbotPopup widget
+                  },
+                );
+              },
             ),
           ],
         ),
