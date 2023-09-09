@@ -1,5 +1,6 @@
 import 'package:dialog_flowtter/dialog_flowtter.dart';
 import 'package:flutter/material.dart';
+// import 'package:flutter/services.dart';
 
 import 'messages_screen.dart';
 //import 'package:flutter_bot/Messages.dart';
@@ -10,17 +11,20 @@ class ChatbotPopup extends StatefulWidget {
 }
 
 class _ChatbotPopupState extends State<ChatbotPopup> {
-  late DialogFlowtter dialogFlowtter;
+  DialogFlowtter dialogFlowtter = DialogFlowtter(jsonPath: 'assets/dialog_flow_auth.json');
+  // final dialogFlowtter = DialogFlowtter(
+  //   authCredentials: ServiceAccountCredentials.fromJson(chatbot.json),
+  // );
   final TextEditingController _controller = TextEditingController();
 
   List<Map<String, dynamic>> messages = [];
 
 
-  @override
-  void initState() {
-    dialogFlowtter = DialogFlowtter();
-    super.initState();
-  }
+  // @override
+  // void initState() {
+  //   dialogFlowtter = DialogFlowtter();
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
