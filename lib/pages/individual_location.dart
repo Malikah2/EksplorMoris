@@ -51,7 +51,7 @@ class _IndividualLocationPageState extends State<IndividualLocationPage> {
             IconButton(
               onPressed: () {
                 speakText(saved
-                ? '&{widget.roundplace.name} removed from favorites'
+                    ? '&{widget.roundplace.name} removed from favorites'
                     : '${widget.roundplace.name} added to favorites');
 
                 String message = favorites.toggleFavorites(widget.roundplace);
@@ -65,11 +65,8 @@ class _IndividualLocationPageState extends State<IndividualLocationPage> {
                 );
                 setState(() {
                   saved = !saved;
-                  currentIcon = saved
-                      ? Icons.favorite
-                      : Icons.favorite_border;
+                  currentIcon = saved ? Icons.favorite : Icons.favorite_border;
                 });
-
               },
               icon: Icon(
                 currentIcon = favorites.isFavorite(widget.roundplace)
@@ -166,7 +163,6 @@ class _IndividualLocationPageState extends State<IndividualLocationPage> {
                       fontWeight: FontWeight.bold,
                     ),
                     textAlign: TextAlign.left,
-
                   ),
                 ),
                 const SizedBox(
@@ -181,11 +177,11 @@ class _IndividualLocationPageState extends State<IndividualLocationPage> {
                     Row(
                       children: [
                         GestureDetector(
-                          onTap: (){
+                          onTap: () {
                             _showMapDialog(
                               context,
-                              widget.roundplace.latitude ,
-                              widget.roundplace.longitude ,
+                              widget.roundplace.latitude,
+                              widget.roundplace.longitude
                             );
                           },
                           child: CircleAvatar(
@@ -229,7 +225,7 @@ class _IndividualLocationPageState extends State<IndividualLocationPage> {
                   ),
                 ),
                 GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     speakText("Description");
                   },
                   child: Text(
@@ -252,9 +248,9 @@ class _IndividualLocationPageState extends State<IndividualLocationPage> {
                     speakText(isDescriptionExpanded
                         ? widget.roundplace.description
                         : (widget.roundplace.description.length > 100
-                        ? widget.roundplace.description.substring(0, 100) +
-                        "... Read More"
-                        : widget.roundplace.description));
+                            ? widget.roundplace.description.substring(0, 100) +
+                                "... Read More"
+                            : widget.roundplace.description));
                   },
                   child: Text(
                     isDescriptionExpanded
@@ -323,28 +319,30 @@ class _IndividualLocationPageState extends State<IndividualLocationPage> {
       },
     );
   }
-
 }
 
 void _showMapDialog(BuildContext context, double latitude, double longitude) {
   showDialog(
-      context: context,
-      builder: (BuildContext context){
-        return AlertDialog(
-          title: Text('Location Map'),
-          content: Container(
-            height: 300,
-            child: MapWidget(latitude: latitude, longitude: longitude,),
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text('Location Map'),
+        content: Container(
+          height: 300,
+          child: MapWidget(
+            latitude: latitude,
+            longitude: longitude,
           ),
-          actions: <Widget>[
-            ElevatedButton(
-                onPressed: (){
-                  Navigator.of(context).pop();
-                },
-                child: Text('Close'),
-            ),
-          ],
-        );
-      },
+        ),
+        actions: <Widget>[
+          ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: Text('Close'),
+          ),
+        ],
+      );
+    },
   );
 }

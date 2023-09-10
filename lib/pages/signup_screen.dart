@@ -3,18 +3,17 @@ import 'package:example/signup_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-
 import 'home_widget.dart';
 
-
 class SignUpScreen extends StatelessWidget {
-   SignUpScreen({Key? key}) : super(key: key);
-FlutterTts flutterTts = FlutterTts();
-   Future<void> speakText(String text) async {
-     await flutterTts.setLanguage("en-US");
-     await flutterTts.speak(text);
-   }
+  SignUpScreen({Key? key}) : super(key: key);
+  FlutterTts flutterTts = FlutterTts();
+
+  Future<void> speakText(String text) async {
+    await flutterTts.setLanguage("en-US");
+    await flutterTts.speak(text);
+  }
+
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(SignUpController());
@@ -25,14 +24,20 @@ FlutterTts flutterTts = FlutterTts();
           padding: const EdgeInsets.all(25),
           child: Column(
             children: [
-              SizedBox(height: 25,),
-              Image.asset('assets/login.png',height: 200,),
+              SizedBox(
+                height: 25,
+              ),
+              Image.asset(
+                'assets/login.png',
+                height: 200,
+              ),
               SizedBox(height: 1), // adding spacing between image and text
               GestureDetector(
-                onTap: (){
+                onTap: () {
                   speakText("Welcome");
                 },
-                child: Text('Welcome!',
+                child: Text(
+                  'Welcome!',
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -41,11 +46,10 @@ FlutterTts flutterTts = FlutterTts();
               ),
               SizedBox(height: 5),
 
-
               Form(
                 key: _formKey,
                 child: Container(
-                  padding: EdgeInsets.symmetric(vertical: 20.0 ),
+                  padding: EdgeInsets.symmetric(vertical: 20.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -83,7 +87,6 @@ FlutterTts flutterTts = FlutterTts();
                         ),
                       ),
                       const SizedBox(height: 10),
-
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
@@ -113,20 +116,27 @@ FlutterTts flutterTts = FlutterTts();
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const Text('OR'),
-                  SizedBox(height: 10,),
+                  SizedBox(
+                    height: 10,
+                  ),
                   SizedBox(
                     width: 200,
                     child: OutlinedButton.icon(
-                      icon: Image.asset('assets/google.png', width: 20.0,),
+                      icon: Image.asset(
+                        'assets/google.png',
+                        width: 20.0,
+                      ),
                       onPressed: () {},
                       label: GestureDetector(
-                        onTap: (){
-                          speakText("Sign in with Google");
-                        },
+                          onTap: () {
+                            speakText("Sign in with Google");
+                          },
                           child: Text('Sign in with Google')),
                     ),
                   ),
-                  const SizedBox(height: 1,),
+                  const SizedBox(
+                    height: 1,
+                  ),
                   TextButton(
                       onPressed: () {
                         Navigator.pushReplacement(
@@ -136,21 +146,17 @@ FlutterTts flutterTts = FlutterTts();
                           ),
                         );
                       },
-                      child: const Text.rich(
-                          TextSpan(
-                              text: ('Already have an Account?'),
-                              style: TextStyle(
-                                color: Colors.black,
-                              ),
-                              children: const [
-                                TextSpan(
-                                  text: ('Login'),
-                                  style: TextStyle(color: Colors.blue),
-                                ),
-                              ]
-                          )
-                      )
-                  ),
+                      child: const Text.rich(TextSpan(
+                          text: ('Already have an Account?'),
+                          style: TextStyle(
+                            color: Colors.black,
+                          ),
+                          children: const [
+                            TextSpan(
+                              text: ('Login'),
+                              style: TextStyle(color: Colors.blue),
+                            ),
+                          ]))),
                 ],
               )
             ],

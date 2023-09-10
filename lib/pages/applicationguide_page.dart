@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
@@ -57,7 +56,8 @@ class ApplicationGuidePage extends StatelessWidget {
             // Step 3: Description Content
             GestureDetector(
               onTap: () {
-                speakText("Our app is designed to be your trusted companion, offering a curated selection of the most enchanting places to visit, from pristine beaches to lush mountains, vibrant markets to serene gardens. Whether you're an adventurer seeking thrilling experiences or a leisure traveler craving relaxation, our app provides a personalized guide to help you create unforgettable memories in this tropical haven.\n\nUncover the rich culture, captivating history, and stunning landscapes of Mauritius with the convenience of our app in your pocket. Get ready to explore and immerse yourself in the wonders of this island paradise!");
+                speakText(
+                    "Our app is designed to be your trusted companion, offering a curated selection of the most enchanting places to visit, from pristine beaches to lush mountains, vibrant markets to serene gardens. Whether you're an adventurer seeking thrilling experiences or a leisure traveler craving relaxation, our app provides a personalized guide to help you create unforgettable memories in this tropical haven.\n\nUncover the rich culture, captivating history, and stunning landscapes of Mauritius with the convenience of our app in your pocket. Get ready to explore and immerse yourself in the wonders of this island paradise!");
               },
               child: Text(
                 "Our app is designed to be your trusted companion, offering a curated selection of the most enchanting places to visit, from pristine beaches to lush mountains, vibrant markets to serene gardens. Whether you're an adventurer seeking thrilling experiences or a leisure traveler craving relaxation, our app provides a personalized guide to help you create unforgettable memories in this tropical haven.\n\nUncover the rich culture, captivating history, and stunning landscapes of Mauritius with the convenience of our app in your pocket. Get ready to explore and immerse yourself in the wonders of this island paradise!",

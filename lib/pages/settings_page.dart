@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:get/get.dart';
@@ -24,6 +23,7 @@ class _SettingsPageState extends State<SettingsPage> {
   bool _isLocationEnabled = false;
   String _selectedLanguage = 'English';
   FlutterTts flutterTts = FlutterTts();
+
   Future<void> speakText(String text) async {
     await flutterTts.setLanguage("en-US");
     await flutterTts.speak(text);
@@ -34,9 +34,9 @@ class _SettingsPageState extends State<SettingsPage> {
     return Scaffold(
       appBar: AppBar(
         title: GestureDetector(
-          onTap: (){
-            speakText("Settings");
-          },
+            onTap: () {
+              speakText("Settings");
+            },
             child: Text("Settings")),
       ),
       body: Padding(
@@ -45,7 +45,7 @@ class _SettingsPageState extends State<SettingsPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             GestureDetector(
-              onTap: (){
+              onTap: () {
                 speakText("Theme");
               },
               child: Text(
@@ -58,9 +58,9 @@ class _SettingsPageState extends State<SettingsPage> {
             ),
             SwitchListTile(
               title: GestureDetector(
-                onTap: (){
-                  speakText("Light Mode");
-                },
+                  onTap: () {
+                    speakText("Light Mode");
+                  },
                   child: Text("Light Mode")),
               value: _isDarkModeEnabled,
               onChanged: (value) {
@@ -75,7 +75,7 @@ class _SettingsPageState extends State<SettingsPage> {
               height: 10,
             ),
             GestureDetector(
-              onTap: (){
+              onTap: () {
                 speakText("Location Preference");
               },
               child: Text(
@@ -88,9 +88,9 @@ class _SettingsPageState extends State<SettingsPage> {
             ),
             SwitchListTile(
               title: GestureDetector(
-                onTap: (){
-                  speakText("Enable Location");
-                },
+                  onTap: () {
+                    speakText("Enable Location");
+                  },
                   child: Text("Enable Location")),
               value: _isLocationEnabled,
               onChanged: (value) {
@@ -106,7 +106,7 @@ class _SettingsPageState extends State<SettingsPage> {
               height: 10,
             ),
             GestureDetector(
-              onTap: (){
+              onTap: () {
                 speakText("Language Preference");
               },
               child: Text(
@@ -153,7 +153,7 @@ class _SettingsPageState extends State<SettingsPage> {
               height: 30,
             ),
             GestureDetector(
-              onTap: (){
+              onTap: () {
                 speakText("System Updates");
               },
               child: Text(
@@ -175,7 +175,9 @@ class _SettingsPageState extends State<SettingsPage> {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       content: Text("System is up to date!"),
-                      duration: Duration(seconds: 2), // Duration for how long the snackbar is visible
+                      duration: Duration(
+                          seconds:
+                              2), // Duration for how long the snackbar is visible
                     ),
                   );
                 },
@@ -189,7 +191,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 child: Row(
                   children: [
                     GestureDetector(
-                      onTap: (){
+                      onTap: () {
                         speakText("Check for Updates");
                       },
                       child: Text(

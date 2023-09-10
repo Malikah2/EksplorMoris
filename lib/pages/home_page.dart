@@ -8,8 +8,6 @@ import 'package:example/widgets/tourist_places.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
-import 'package:dialog_flowtter/dialog_flowtter.dart';
-
 import 'chatbot_popup.dart';
 
 class HomePage extends StatefulWidget {
@@ -42,7 +40,6 @@ class _HomePageState extends State<HomePage> {
       isSearchBarFocused = _searchFocusNode.hasFocus;
     });
   }
-
 
   @override
   void initState() {
@@ -176,23 +173,6 @@ class _HomePageState extends State<HomePage> {
               NearbyPlaces(),
             ],
           ),
-          // //Chat interface at top right
-          // Positioned(
-          //   top: kToolbarHeight,
-          //   right: 0,
-          //   child: Container(
-          //     width: 300,
-          //     height: MediaQuery.of(context).size.height - kToolbarHeight,
-          //     color: Colors.blue,
-          //     //add content
-          //     child: Center(
-          //       child: Text(
-          //         "Chat Interface",
-          //         style: TextStyle(fontSize: 20),
-          //       ),
-          //     ),
-          //   ),
-          // )
         ]),
       ),
     );

@@ -7,8 +7,9 @@ import 'pharmacy_otherpage/pharmacies_otherpage.dart';
 import 'banks_otherpage/banks_otherpage.dart';
 import 'banks_viewall/banks_viewall.dart';
 import 'package:flutter_tts/flutter_tts.dart';
+
 class OtherPage extends StatelessWidget {
-   OtherPage({Key? key}) : super(key: key);
+  OtherPage({Key? key}) : super(key: key);
   FlutterTts flutterTts = FlutterTts();
 
   Future<void> speakText(String text) async {
@@ -24,15 +25,14 @@ class OtherPage extends StatelessWidget {
         bool? shouldLeave = await showExitConfirmationDialog(context);
         return shouldLeave ?? false;
       },
-
       child: Scaffold(
-
         body: ListView(
-
           physics: const BouncingScrollPhysics(),
           padding: const EdgeInsets.all(14),
           children: [
-            SizedBox(height: 30,),
+            SizedBox(
+              height: 30,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -45,7 +45,6 @@ class OtherPage extends StatelessWidget {
                     style: Theme.of(context).textTheme.headline6,
                   ),
                 ),
-                //TextButton(onPressed: (){}, child: Text("View All")),
               ],
             ),
             const SizedBox(height: 10),
@@ -68,7 +67,7 @@ class OtherPage extends StatelessWidget {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>  AllHospitals(),
+                          builder: (context) => AllHospitals(),
                         ),
                       );
                     },
@@ -76,7 +75,7 @@ class OtherPage extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 10),
-             Hospitals(),
+            Hospitals(),
             const SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -95,7 +94,7 @@ class OtherPage extends StatelessWidget {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>  AllPharmacies(),
+                          builder: (context) => AllPharmacies(),
                         ),
                       );
                     },
@@ -103,7 +102,7 @@ class OtherPage extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 10),
-             Pharmacy(),
+            Pharmacy(),
             const SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -122,7 +121,7 @@ class OtherPage extends StatelessWidget {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>  AllBanks(),
+                          builder: (context) => AllBanks(),
                         ),
                       );
                     },
@@ -130,12 +129,13 @@ class OtherPage extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 10),
-             Bank(),
+            Bank(),
           ],
         ),
       ),
     );
   }
+
   Future<bool?> showExitConfirmationDialog(BuildContext context) async {
     return showDialog<bool>(
       context: context,

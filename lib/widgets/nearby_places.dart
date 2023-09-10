@@ -4,7 +4,7 @@ import 'package:example/models/nearby_places_model.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
 class NearbyPlaces extends StatelessWidget {
-   NearbyPlaces({Key? key}) : super(key: key);
+  NearbyPlaces({Key? key}) : super(key: key);
   FlutterTts flutterTts = FlutterTts();
 
   Future<void> speakText(String text) async {

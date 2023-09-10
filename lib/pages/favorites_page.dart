@@ -2,6 +2,7 @@ import 'package:example/pages/favorites.dart';
 import 'package:example/pages/tourist_details_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
+
 class FavoritesPage extends StatefulWidget {
   @override
   _FavoritesPageState createState() => _FavoritesPageState();
@@ -40,9 +41,9 @@ class _FavoritesPageState extends State<FavoritesPage> {
       child: Scaffold(
         appBar: AppBar(
           title: GestureDetector(
-            onTap: (){
-              speakText("Favorite Places");
-            },
+              onTap: () {
+                speakText("Favorite Places");
+              },
               child: Text('Favorite Places')),
         ),
         body: RefreshIndicator(

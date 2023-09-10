@@ -23,7 +23,8 @@ class _roundDetailsPageState extends State<roundDetailsPage> {
   late IconData currentIcon = Icons.favorite_border;
   bool saved = false;
   FlutterTts flutterTts = FlutterTts();
-  Future<void> speakText(String text) async{
+
+  Future<void> speakText(String text) async {
     await flutterTts.setLanguage('en-US');
     await flutterTts.speak(text);
   }
@@ -91,9 +92,7 @@ class _roundDetailsPageState extends State<roundDetailsPage> {
                                         SnackBar(
                                           content: Text(showMessage),
                                           duration: Duration(seconds: 1),
-
                                         ),
-
                                       );
                                       setState(() {
                                         saved = !saved;
@@ -151,7 +150,7 @@ class _roundDetailsPageState extends State<roundDetailsPage> {
                           height: 6.0,
                         ),
                         GestureDetector(
-                          onTap: (){
+                          onTap: () {
                             speakText(place.name);
                           },
                           child: Text(
@@ -161,7 +160,6 @@ class _roundDetailsPageState extends State<roundDetailsPage> {
                               fontWeight: FontWeight.bold,
                             ),
                             textAlign: TextAlign.center,
-
                           ),
                         ),
                         SizedBox(

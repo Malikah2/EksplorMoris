@@ -1,10 +1,7 @@
-import 'package:dialog_flowtter/dialog_flowtter.dart';
 import 'package:example/pages/tourist_details_page.dart';
 import 'package:flutter/material.dart';
 import 'package:example/models/recommended_places_model.dart';
 import 'package:flutter_tts/flutter_tts.dart';
-//import 'package:latlong2/latlong.dart';
-import 'package:flutter_map/flutter_map.dart';
 
 class RecommendedPlaces extends StatelessWidget {
   RecommendedPlaces({Key? key}) : super(key: key);

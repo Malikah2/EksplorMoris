@@ -7,12 +7,13 @@ import 'package:flutter_tts/flutter_tts.dart';
 
 class LoginScreen extends StatelessWidget {
   final FlutterTts flutterTts = FlutterTts();
-   LoginScreen({Key? key}) : super(key: key);
 
-   Future<void> speakText(String text) async {
-     await flutterTts.setLanguage("en-US");
-     await flutterTts.speak(text);
-   }
+  LoginScreen({Key? key}) : super(key: key);
+
+  Future<void> speakText(String text) async {
+    await flutterTts.setLanguage("en-US");
+    await flutterTts.speak(text);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -116,8 +117,10 @@ class LoginScreen extends StatelessWidget {
                                     GestureDetector(
                                       onTap: () {
                                         Navigator.pop(context);
-                                        Get.to(() => const ForgetPasswordMailScreen());
-                                        speakText('Reset via E-mail Verification');
+                                        Get.to(() =>
+                                            const ForgetPasswordMailScreen());
+                                        speakText(
+                                            'Reset via E-mail Verification');
                                       },
                                       child: Container(
                                         padding: const EdgeInsets.all(16),
@@ -162,7 +165,8 @@ class LoginScreen extends StatelessWidget {
                                     ),
                                     GestureDetector(
                                       onTap: () {
-                                        speakText("Reset via phone verification");
+                                        speakText(
+                                            "Reset via phone verification");
                                       },
                                       child: Container(
                                         padding: const EdgeInsets.all(20.0),
@@ -242,9 +246,9 @@ class LoginScreen extends StatelessWidget {
                       ),
                       onPressed: () {},
                       label: GestureDetector(
-                        onTap: () {
-                          speakText("Sign in with Google");
-                        },
+                          onTap: () {
+                            speakText("Sign in with Google");
+                          },
                           child: Text('Sign in with Google')),
                     ),
                   ),
